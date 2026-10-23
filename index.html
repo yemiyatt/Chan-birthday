@@ -3,527 +3,392 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>정찬 오빠의 생일 🎂</title>
-
 <style>
-:root {
-  --mint:#d9f6e8;
-  --yellow:#fff0ae;
-  --pink:#ffd9e7;
+:root{
+  --mint:#d9f5e7;
+  --yellow:#fff0b5;
+  --pink:#ffd9e8;
   --blue:#dceaff;
-  --ink:#514b5b;
-  --white:#fffdf9;
+  --purple:#e9ddff;
+  --ink:#554d62;
 }
-* { box-sizing:border-box; }
-body {
-  margin:0;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);
   font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  color:var(--ink);
   background:linear-gradient(140deg,var(--mint),var(--yellow),var(--pink),var(--blue));
-  background-size:300% 300%;
-  animation:pastel 14s ease infinite;
-  min-height:100vh;
-  overflow-x:hidden;
-  transition:background 1s,color 1s;
+  background-size:350% 350%;
+  animation:pastel 18s ease infinite;
+  transition:background .8s;
 }
-@keyframes pastel {
-  0%,100% {background-position:0% 50%}
-  50% {background-position:100% 50%}
+@keyframes pastel{
+  0%,100%{background-position:0 50%}
+  50%{background-position:100% 50%}
 }
-button {
-  font:inherit;
-  border:0;
-  cursor:pointer;
-  color:var(--ink);
-  background:white;
-  border-radius:22px;
-  padding:13px 19px;
-  box-shadow:0 5px 0 #0000000b,0 7px 18px #6d668018;
-  transition:transform .2s;
+button{
+  border:0;border-radius:22px;padding:13px 18px;
+  font:inherit;color:var(--ink);background:white;
+  box-shadow:0 5px 15px #63557618;
+  cursor:pointer;transition:transform .18s,filter .18s;
 }
-button:hover {transform:translateY(-2px)}
-button:active {transform:scale(.97)}
-button:focus-visible {outline:3px solid #8b82bc}
-h1,h2,h3,p {line-height:1.7}
-h1 {font-size:clamp(30px,7vw,48px);margin:10px 0}
-h2 {font-size:clamp(23px,5vw,31px)}
-p {white-space:pre-line}
-.small {font-size:13px;opacity:.8}
-.center {text-align:center}
-.page {
-  width:min(760px,92%);
-  margin:0 auto;
-  padding:25px 0 65px;
-}
-.card {
-  background:#ffffffd9;
-  border:2px solid #ffffffc9;
-  border-radius:30px;
-  padding:clamp(20px,5vw,36px);
-  margin:22px 0;
-  box-shadow:0 15px 45px #5f57701a;
+button:hover{transform:translateY(-2px);filter:brightness(1.02)}
+button:active{transform:scale(.97)}
+button:focus-visible{outline:3px solid #9783c8}
+button:disabled{opacity:.5;cursor:default}
+h1,h2,h3,p{line-height:1.75}
+h1{font-size:clamp(30px,7vw,47px);margin:12px 0}
+h2{font-size:clamp(23px,5vw,31px)}
+p{white-space:pre-line}
+main{width:min(760px,92%);margin:auto;padding:20px 0 70px}
+.center{text-align:center}
+.card{
+  padding:clamp(20px,5vw,34px);margin:22px 0;
+  border-radius:30px;background:#ffffffdb;
+  border:2px solid #ffffffd9;
+  box-shadow:0 14px 40px #695c7819;
   backdrop-filter:blur(10px);
 }
-.pill {
-  display:inline-block;
-  border-radius:30px;
-  background:#fff8;
-  padding:8px 14px;
-  font-size:13px;
+.pill{
+  display:inline-block;padding:7px 13px;border-radius:30px;
+  background:#fff9;font-size:13px;
 }
-.decor {
-  position:fixed;
-  pointer-events:none;
-  z-index:0;
-  opacity:.7;
-  animation:float 5s ease-in-out infinite;
-}
-@keyframes float {
-  0%,100% {transform:translateY(0) rotate(-8deg)}
-  50% {transform:translateY(-16px) rotate(8deg)}
-}
-.d1 {top:7%;left:4%;font-size:27px}
-.d2 {top:22%;right:4%;font-size:32px;animation-delay:1s}
-.d3 {bottom:10%;left:5%;font-size:28px;animation-delay:2s}
-.d4 {bottom:25%;right:5%;font-size:24px;animation-delay:.7s}
-main {position:relative;z-index:1}
-#curtain {
-  position:fixed;
-  inset:0;
-  z-index:20;
-  display:flex;
-  overflow:hidden;
+.small{font-size:13px;opacity:.78}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:15px 0}
+.pink{background:#ffd3e5}
+.mint{background:#c9f0dc}
+.yellow{background:#ffe9a0}
+.blue{background:#d7e7ff}
+.purple{background:#e8dcff}
+hr{border:0;border-top:2px dashed #e6d9e9;margin:27px 0}
+.section{scroll-margin-top:16px}
+.floaty{position:fixed;pointer-events:none;z-index:0;animation:float 5s ease-in-out infinite}
+.f1{top:7%;left:3%;font-size:27px}
+.f2{top:24%;right:4%;font-size:30px;animation-delay:1s}
+.f3{bottom:12%;left:4%;font-size:25px;animation-delay:2s}
+.f4{bottom:30%;right:4%;font-size:25px;animation-delay:.5s}
+@keyframes float{50%{transform:translateY(-13px) rotate(8deg)}}
+main{position:relative;z-index:1}
+
+/* 커튼 */
+#curtain{
+  position:fixed;inset:0;z-index:50;display:flex;overflow:hidden;
   background:#ffdce9;
-  transition:visibility 1s;
 }
-.curtain-panel {
-  width:50%;
-  height:100%;
-  background:repeating-linear-gradient(
-    90deg,#f6aeca 0,#f6aeca 18px,
-    #ffc7dc 18px,#ffc7dc 38px,
-    #ffe0eb 38px,#ffe0eb 44px
-  );
-  box-shadow:inset -12px 0 20px #a85f8330;
+.panel{
+  width:50%;height:100%;
+  background:repeating-linear-gradient(90deg,#f4aaca 0 17px,#ffc7dc 17px 36px,#ffe1ed 36px 43px);
   transition:transform 1.5s cubic-bezier(.7,0,.2,1);
 }
-.curtain-panel.left {border-right:3px solid #fff8}
-.curtain-panel.right {border-left:3px solid #fff8}
-#curtain.open .left {transform:translateX(-102%)}
-#curtain.open .right {transform:translateX(102%)}
-.curtain-label {
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:25px;
+.panel.left{border-right:3px solid #fff8}
+.panel.right{border-left:3px solid #fff8}
+#curtain.open .left{transform:translateX(-102%)}
+#curtain.open .right{transform:translateX(102%)}
+.curtain-label{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;padding:24px;
   transition:opacity .5s;
 }
-#curtain.open .curtain-label {opacity:0;pointer-events:none}
-.curtain-label h1 {color:#a34e79}
-.curtain-label p {max-width:320px}
-.hidden {display:none!important}
-.section {scroll-margin-top:20px}
-.big-button {
-  background:#fff;
-  border:2px solid #fff;
-  font-weight:700;
-  padding:15px 22px;
-}
-.pink-button {background:#ffd3e5}
-.mint-button {background:#c9f0dc}
-.yellow-button {background:#ffe9a0}
-.blue-button {background:#d7e7ff}
-.button-row {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-  margin-top:18px;
-}
-.badge-row {
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:15px 0;
-}
-.divider {
-  border:0;
-  border-top:2px dashed #e8dce9;
-  margin:26px 0;
-}
-#gameArea {
-  min-height:210px;
-  border-radius:24px;
-  background:linear-gradient(140deg,#e0f8ed,#fff0c5);
-  position:relative;
-  overflow:hidden;
-  padding:18px;
+#curtain.open .curtain-label{opacity:0;pointer-events:none}
+.curtain-label h1{color:#a34e79}
+.hidden{display:none!important}
+
+/* 게임 */
+#starArea{
+  height:220px;border-radius:23px;position:relative;overflow:hidden;
+  background:linear-gradient(140deg,#d9f7e9,#fff0c0);
   margin-top:15px;
 }
-.star-target {
-  font-size:38px;
-  position:absolute;
-  padding:0;
-  background:transparent;
-  box-shadow:none;
-  border-radius:50%;
-  touch-action:manipulation;
+.star{
+  position:absolute;font-size:34px;padding:0;background:transparent;
+  box-shadow:none;touch-action:manipulation;
 }
-.choice {
-  min-width:90px;
-  min-height:88px;
-  font-size:35px;
-  background:#fff9;
+.result{font-weight:bold;min-height:30px;text-align:center}
+.quiz-option{display:block;width:100%;margin:8px 0;background:#fff}
+.choice{font-size:32px;min-width:82px;min-height:78px;background:#fff9}
+
+/* 케이크 */
+.cake-scene{width:280px;max-width:100%;height:250px;position:relative;margin:10px auto}
+.plate{
+  position:absolute;bottom:15px;left:5%;width:90%;height:22px;
+  background:linear-gradient(#fff,#d5d1e9);border-radius:50%;
+  box-shadow:0 7px 0 #d4c9e5;
 }
-.result {
-  font-weight:700;
-  min-height:28px;
-  text-align:center;
+.bottom-cake{
+  position:absolute;bottom:37px;left:12%;width:76%;height:77px;
+  border-radius:15px 15px 22px 22px;
+  background:linear-gradient(90deg,#e9a3bd,#ffe0e9 35%,#ffc8d8 72%,#e79ab7);
+  box-shadow:inset 0 -12px 0 #e7a0bb;
 }
-.quiz-option {
-  width:100%;
-  display:block;
-  margin:9px 0;
-  background:#fff;
+.bottom-cake:before{
+  content:"";position:absolute;top:0;width:100%;height:20px;
+  background:#fff1f5;border-radius:50%;
 }
-#cakeArea {padding:15px 0 5px}
-.cake-scene {
-  width:280px;
-  max-width:100%;
-  height:245px;
-  margin:12px auto 0;
-  position:relative;
+.top-cake{
+  position:absolute;bottom:103px;left:20%;width:60%;height:58px;
+  border-radius:15px 15px 20px 20px;
+  background:linear-gradient(90deg,#bfe6d0,#f4ffeb 40%,#d6f4e1);
+  box-shadow:inset 0 -8px 0 #b2ddc7;
 }
-.cake-plate {
-  position:absolute;
-  bottom:15px;
-  left:5%;
-  width:90%;
-  height:23px;
-  border-radius:50%;
-  background:linear-gradient(#fff,#d8d7ee);
-  box-shadow:0 8px 0 #d6cde7;
+.top-cake:before{
+  content:"";position:absolute;top:0;width:100%;height:19px;
+  background:#fffdf1;border-radius:50%;
 }
-.cake-bottom {
-  position:absolute;
-  bottom:38px;
-  left:12%;
-  width:76%;
-  height:77px;
-  border-radius:15px 15px 23px 23px;
-  background:linear-gradient(90deg,#eaa4bc,#ffe2e8 28%,#ffc9d9 70%,#e99bb9);
-  box-shadow:inset 0 -12px 0 #eaa0bc;
+.berry{position:absolute;top:9px;font-size:23px;z-index:2}
+.b1{left:16%}.b2{left:44%;top:2px}.b3{right:15%}
+.candle{
+  position:absolute;bottom:158px;left:calc(50% - 5px);
+  width:10px;height:36px;border-radius:4px;z-index:3;
+  background:repeating-linear-gradient(135deg,#fff 0 6px,#e9a5c6 6px 11px);
 }
-.cake-bottom:before {
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:20px;
-  border-radius:50%;
-  background:#fff0f5;
-}
-.cake-top {
-  position:absolute;
-  bottom:104px;
-  left:20%;
-  width:60%;
-  height:57px;
-  border-radius:14px 14px 20px 20px;
-  background:linear-gradient(90deg,#c5e8d5,#f1ffe9 35%,#d8f5e3);
-  box-shadow:inset 0 -8px 0 #b3dfca;
-}
-.cake-top:before {
-  content:"";
-  position:absolute;
-  top:0;
-  width:100%;
-  height:19px;
-  border-radius:50%;
-  background:#fffdf1;
-}
-.berry {
-  position:absolute;
-  top:10px;
-  font-size:23px;
-  z-index:2;
-}
-.berry.b1 {left:18%}
-.berry.b2 {left:45%;top:3px}
-.berry.b3 {right:17%}
-.candle {
-  position:absolute;
-  bottom:157px;
-  left:calc(50% - 5px);
-  width:10px;
-  height:35px;
-  border-radius:4px;
-  background:repeating-linear-gradient(135deg,#fff 0 6px,#e8a6c5 6px 11px);
-  z-index:3;
-}
-.flame {
-  position:absolute;
-  top:-20px;
-  left:-4px;
-  width:18px;
-  height:22px;
+.flame{
+  position:absolute;top:-20px;left:-4px;width:18px;height:22px;
   border-radius:60% 40% 55% 45%;
-  background:radial-gradient(circle at 50% 65%,#fff6a4 0 20%,#ffac48 50%,#ff6c76 75%);
-  animation:flicker .5s infinite alternate;
-  filter:drop-shadow(0 0 9px #ffb347);
+  background:radial-gradient(circle at 50% 65%,#fff5a2 0 20%,#ffb147 50%,#ff7180 76%);
+  filter:drop-shadow(0 0 9px #ffb347);animation:flicker .5s infinite alternate;
 }
-@keyframes flicker {
-  from {transform:rotate(-7deg) scale(.92)}
-  to {transform:rotate(7deg) scale(1.08)}
+@keyframes flicker{to{transform:rotate(8deg) scale(1.08)}}
+.flame.out{display:none}
+
+/* 책 엔딩 */
+#book{
+  background:linear-gradient(135deg,#fff5d7,#ffe2ed,#e2f7ec);
+  border:5px solid #fff8;
+  border-radius:28px;
+  padding:12px;
+  box-shadow:0 18px 45px #5d50632b;
 }
-.flame.out {display:none}
-#letter {
-  background:#fffdf5;
-  border:2px solid #f6d8df;
-  border-radius:12px;
-  padding:25px;
-  text-align:left;
-  line-height:2;
-  box-shadow:5px 7px 0 #f0cbd9;
+.book-page{
+  min-height:290px;
+  padding:clamp(20px,5vw,36px);
+  background:#fffdf7;
+  border-radius:18px;
+  box-shadow:inset 0 0 0 2px #f5e2e6;
+  display:flex;flex-direction:column;justify-content:center;
+  text-align:center;
 }
-#letter p {line-height:2.05}
-.music-box {
-  border-radius:22px;
-  background:#e7f5ff;
-  padding:18px;
-}
-#musicFrame {
-  width:100%;
-  aspect-ratio:16/9;
-  border:0;
-  border-radius:15px;
-  margin-top:15px;
-}
-footer {text-align:center;font-size:13px;padding:20px;opacity:.8}
-#blackTheme {
-  position:fixed;
-  inset:0;
-  z-index:30;
-  background:radial-gradient(ellipse at center,#17162c,#05050d 75%);
-  color:#fff3dc;
-  opacity:0;
-  visibility:hidden;
+.book-page p{line-height:2}
+.page-count{font-size:12px;opacity:.65;letter-spacing:2px}
+#finalLetter{white-space:pre-line;text-align:left;line-height:2}
+#musicPlayer{
+  position:fixed;left:-9999px;bottom:0;
+  width:2px;height:2px;border:0;opacity:.01;
   pointer-events:none;
-  transition:opacity 1s,visibility 1s;
-  overflow:hidden;
 }
-body.dark #blackTheme {
-  opacity:1;
-  visibility:visible;
+#fireworksScreen{
+  display:none;position:fixed;inset:0;z-index:70;
+  background:radial-gradient(ellipse at center,#17152c,#05050d 75%);
+  color:#fff2cf;
 }
-body.dark {
-  background:#080812;
-}
-body.dark main,
-body.dark .decor {filter:brightness(.8)}
-body.dark .card {background:#fffaf0e8;color:#514b5b}
-.firework-title {
-  position:absolute;
-  top:15%;
-  width:100%;
-  text-align:center;
-  padding:20px;
-  font-size:clamp(24px,6vw,38px);
-  color:#ffe9b2;
-  text-shadow:0 0 20px #ff94ce;
-}
-#fireworks {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-}
-.theme-caption {
-  position:absolute;
-  bottom:12%;
-  width:100%;
-  text-align:center;
-  color:#ffdce9;
-  letter-spacing:2px;
-}
-#skipFireworks {
-  position:absolute;
-  bottom:25px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#ffffff20;
-  color:white;
-  border:1px solid #ffffff70;
-  box-shadow:none;
-}
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    scroll-behavior:auto!important;
-  }
+#fireworksScreen.show{display:block}
+#fireworksCanvas{position:absolute;inset:0;width:100%;height:100%}
+.fireTitle{position:absolute;top:20%;width:100%;text-align:center;font-size:clamp(26px,7vw,40px)}
+#closeFireworks{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);background:#ffffff20;color:white;border:1px solid #ffffff88}
+footer{text-align:center;padding:20px;font-size:13px;opacity:.75}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
 
 <body>
-<div class="decor d1">🎀</div>
-<div class="decor d2">✨</div>
-<div class="decor d3">🌷</div>
-<div class="decor d4">💗</div>
+<div class="floaty f1">🎀</div>
+<div class="floaty f2">✨</div>
+<div class="floaty f3">🌷</div>
+<div class="floaty f4">💗</div>
 
 <div id="curtain">
-  <div class="curtain-panel left"></div>
-  <div class="curtain-panel right"></div>
+  <div class="panel left"></div>
+  <div class="panel right"></div>
   <div class="curtain-label">
-    <div style="font-size:48px">🎂🎀</div>
+    <div style="font-size:52px">🎂🎀✨</div>
     <span class="pill">오늘의 주인공을 위한 작은 선물</span>
     <h1>정찬 오빠,<br>생일 축하해! 🎉</h1>
-    <p>작지만 마음을 담아 준비했어.<br>살짝 열어 볼래?</p>
-    <button id="openGift" class="big-button pink-button">
-      선물 열어 보기 ✨
-    </button>
-    <p class="small">🎀 천천히 구경해 줘 🎀</p>
+    <p>작지만 마음을 담아 준비했어.<br>천천히 구경해 줘. ♡</p>
+    <button id="openGift" class="pink">선물 열어 보기 ✨</button>
+    <p class="small">🎀 오늘 하루 행복하길 바라 🎀</p>
   </div>
 </div>
 
-<div id="blackTheme" aria-hidden="true">
-  <canvas id="fireworks"></canvas>
-  <div class="firework-title">생일 축하해, 정찬 오빠 🎆</div>
-  <div class="theme-caption">오늘 밤은 반짝반짝 ✨</div>
-  <button id="skipFireworks">파스텔 테마로 돌아가기 ♡</button>
+<div id="fireworksScreen">
+  <canvas id="fireworksCanvas"></canvas>
+  <div class="fireTitle">생일 축하해, 정찬 오빠! 🎆</div>
+  <button id="closeFireworks">파스텔 테마로 돌아가기 ♡</button>
 </div>
 
-<main class="page">
-  <header class="center card">
-    <span class="pill">🎀 특별한 하루 🎀</span>
+<iframe id="musicPlayer" title="LOVE ATTACK 음악 플레이어"
+  allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+
+<main>
+  <header class="card center">
+    <span class="pill">🎀 오빠를 위한 특별한 하루 🎀</span>
     <h1>생일 축하해! 🎂</h1>
-    <p>오빠를 위해 준비한 작은 생일 공간이야.</p>
-    <div class="badge-row">
+    <p>오빠를 위해 작은 생일 공간을 준비했어.</p>
+    <p>맛있는 것도 많이 먹고, 마음 편하게 웃는 하루가 되길 바라! 🌷</p>
+    <div class="row">
       <span class="pill">🩵 민트</span>
       <span class="pill">💛 버터 옐로</span>
       <span class="pill">🩷 핑크</span>
       <span class="pill">🩵 베이비 블루</span>
     </div>
-    <p class="small">가끔은 깜짝 밤하늘도 나타날 거야 🎆</p>
+    <p class="small">천천히 둘러봐 줘. 작은 선물들을 준비했어. ♡</p>
+    <div class="row">
+      <button id="musicButton" class="pink">LOVE ATTACK 재생하기 🎵</button>
+      <button id="musicStop" class="blue">음악 멈추기 ⏸</button>
+    </div>
+    <p id="musicStatus" class="small">선물 상자를 열면 음악이 재생돼. 🎧</p>
   </header>
 
   <section class="card center section" id="games">
     <span class="pill">첫 번째 선물 ⭐</span>
     <h2>우리 같이 게임할까? 🎮</h2>
-    <p>작은 게임 세 가지를 준비했어!</p>
-    <hr class="divider">
+    <p>작은 게임들을 준비했어. 부담 없이 즐겨 줘!</p>
 
-    <h3>⭐ 별을 잡아 봐!</h3>
+    <hr>
+    <h3>⭐ 반짝이는 별을 잡아 봐!</h3>
     <p>15초 안에 별 다섯 개를 잡아 봐!</p>
-    <p>잡은 별: <strong id="starScore">0</strong> / 5</p>
-    <p>남은 시간: <strong id="starTime">15</strong>초</p>
-    <div id="gameArea">
-      <p id="starIntro">준비됐으면 시작 버튼을 눌러 줘!</p>
-    </div>
-    <div class="button-row">
-      <button id="startStars" class="pink-button">게임 시작 ⭐</button>
-    </div>
-    <p id="starResult" class="result" aria-live="polite"></p>
+    <p>잡은 별: <b id="starScore">0</b> / 5</p>
+    <p>남은 시간: <b id="starTime">15</b>초</p>
+    <div id="starArea"><p id="starIntro">준비됐으면 시작 버튼을 눌러 줘!</p></div>
+    <div class="row"><button id="startStars" class="pink">게임 시작 ⭐</button></div>
+    <p id="starResult" class="result"></p>
 
-    <hr class="divider">
-
-    <h3>💭 오빠에 대해 맞혀 봐!</h3>
-    <p id="quizQuestion">준비됐으면 퀴즈를 시작해 줘!</p>
+    <hr>
+    <h3>💭 오늘의 작은 퀴즈</h3>
+    <p id="quizQuestion">퀴즈를 시작해 볼까?</p>
     <div id="quizOptions"></div>
-    <p id="quizResult" class="result" aria-live="polite"></p>
-    <div class="button-row">
-      <button id="startQuiz" class="mint-button">퀴즈 시작 💚</button>
-    </div>
+    <p id="quizResult" class="result"></p>
+    <div class="row"><button id="startQuiz" class="mint">퀴즈 시작 💚</button></div>
 
-    <hr class="divider">
-
+    <hr>
     <h3>🎁 어떤 선물을 고를래?</h3>
     <p>마음에 드는 선물 하나를 골라 봐!</p>
-    <div class="button-row">
-      <button class="choice" data-gift="cake" aria-label="케이크 선물">🎂</button>
-      <button class="choice" data-gift="star" aria-label="별 선물">⭐</button>
-      <button class="choice" data-gift="flower" aria-label="꽃 선물">🌷</button>
+    <div class="row">
+      <button class="choice" data-gift="cake">🎂</button>
+      <button class="choice" data-gift="star">⭐</button>
+      <button class="choice" data-gift="flower">🌷</button>
     </div>
-    <p id="giftResult" class="result" aria-live="polite"></p>
+    <p id="giftResult" class="result">어떤 선물이 나올까? 🎀</p>
+
+    <hr>
+    <h3>🍀 오늘의 건강 메시지</h3>
+    <p>버튼을 누를 때마다 새로운 메시지가 나와!</p>
+    <div style="font-size:40px">🌿🍀🌷</div>
+    <p id="healthMessage" class="result">오늘도 건강하고 행복하길 바라! ♡</p>
+    <div class="row"><button id="healthButton" class="mint">오늘의 메시지 뽑기 🍀</button></div>
+
+    <hr>
+    <h3>🌈 오늘은 어떤 걸 해 볼까?</h3>
+    <p>마음에 드는 걸 하나 골라 봐!</p>
+    <div class="row">
+      <button class="choice" data-health="meal">🍚</button>
+      <button class="choice" data-health="sleep">😴</button>
+      <button class="choice" data-health="rest">🌿</button>
+      <button class="choice" data-health="smile">😊</button>
+    </div>
+    <p id="healthChoice" class="result">작은 것부터 하나씩 해 보자! 💚</p>
   </section>
 
-  <section class="card center section" id="cakeSection">
-    <span class="pill">두 번째 선물 🎂</span>
-    <h2>오빠를 위한 생일 케이크</h2>
-    <p>오늘만큼은 달콤하고 행복한 하루가 되길 바라! 🍓</p>
-
-    <div id="cakeArea">
-      <div class="cake-scene">
-        <div class="cake-plate"></div>
-        <div class="cake-bottom"></div>
-        <div class="cake-top">
-          <span class="berry b1">🍓</span>
-          <span class="berry b2">🍓</span>
-          <span class="berry b3">🍓</span>
-        </div>
-        <div class="candle">
-          <div id="flame" class="flame"></div>
-        </div>
-      </div>
+  <section class="card center section">
+    <span class="pill">두 번째 선물 🎧</span>
+    <h2>좋아하는 노래와 함께</h2>
+    <p>잠깐 쉬면서 노래도 듣고, 편안하게 시간을 보내자.</p>
+    <div style="font-size:50px">🎵💿🎀</div>
+    <h3>LOVE ATTACK — RESCENE</h3>
+    <p>음악을 켜 두면 다른 페이지를 둘러볼 때도 계속 재생되도록 준비했어.</p>
+    <div class="row">
+      <button id="musicButton2" class="pink">노래 재생하기 ▶</button>
+      <button id="musicStop2" class="blue">노래 멈추기 ⏸</button>
+      <button id="openYoutube" class="mint">유튜브에서 보기 ↗</button>
     </div>
-
-    <p id="candleMessage">소원을 빌고 촛불을 불어 봐! 🕯️</p>
-    <div class="button-row">
-      <button id="blowCandle" class="yellow-button">후~ 촛불 끄기 🕯️</button>
-      <button id="relightCandle" class="pink-button">촛불 다시 켜기 ✨</button>
-    </div>
+    <p class="small">브라우저 설정에 따라 처음에는 재생 버튼을 한 번 눌러야 할 수 있어.</p>
   </section>
 
-  <section class="card center section" id="voiceSection">
+  <section class="card center section">
     <span class="pill">세 번째 선물 🔊</span>
-    <h2>잠깐, 내 목소리 들어 볼래?</h2>
-    <p>한국어로 생일 축하 인사를 들려줄게.</p>
-    <div style="font-size:45px">🎀🔊🎂</div>
-    <div class="button-row">
-      <button id="voiceButton" class="blue-button">생일 축하 인사 듣기 🔊</button>
-    </div>
-    <p class="small">기기에서 한국어 음성을 지원해야 해.</p>
+    <h2>생일 축하 인사 듣기</h2>
+    <p>한국어로 짧은 생일 인사를 준비했어.</p>
+    <div style="font-size:48px">🎀🔊🎂</div>
+    <div class="row"><button id="voiceButton" class="blue">생일 축하 인사 듣기 🔊</button></div>
+    <p class="small">한국어 음성이 설치된 기기에서 들을 수 있어.</p>
   </section>
 
-  <section class="card center section" id="musicSection">
-    <span class="pill">네 번째 선물 🎵</span>
-    <h2>우리의 작은 음악 시간</h2>
-    <p>좋아하는 노래와 함께 생일을 축하하자! 🎶</p>
-    <div class="music-box">
-      <div style="font-size:42px">🎧💿🎀</div>
-      <h3>LOVE ATTACK</h3>
-      <p>노래를 들으면서 잠깐 쉬어 가자.</p>
-      <div class="button-row">
-        <button id="playMusic" class="pink-button">노래 재생하기 ▶</button>
-        <button id="stopMusic" class="blue-button">노래 멈추기 ⏸</button>
-        <button id="openMusic" class="mint-button">유튜브에서 보기 ↗</button>
+  <section class="card center section">
+    <span class="pill">네 번째 선물 🎆</span>
+    <h2>작은 밤하늘 선물</h2>
+    <p>읽는 걸 방해하지 않도록 불꽃놀이는 버튼을 눌렀을 때만 보여 줄게.</p>
+    <div style="font-size:48px">🌙✨🎇</div>
+    <div class="row"><button id="showFireworks" class="purple">불꽃놀이 보기 🎆</button></div>
+  </section>
+
+  <section class="card center section" id="storybook">
+    <span class="pill">마지막 선물 📖</span>
+    <h2>우리의 작은 생일 책</h2>
+    <p>마지막에는 작은 책장을 한 장씩 넘겨 봐. 🎀</p>
+
+    <div id="book">
+      <div class="book-page">
+        <div class="page-count" id="pageCount">PAGE 1 / 4</div>
+        <div id="pageEmoji" style="font-size:48px">📖🌷</div>
+        <h2 id="pageTitle">오늘의 주인공, 정찬 오빠</h2>
+        <p id="pageText">오늘은 오빠가 태어난 특별한 날이야.</p>
       </div>
-      <div id="musicContainer"></div>
-      <p class="small">음악 재생은 인터넷 연결이 필요해.</p>
+      <div class="row">
+        <button id="prevPage" class="blue" disabled>← 이전 페이지</button>
+        <button id="nextPage" class="pink">다음 페이지 →</button>
+      </div>
+    </div>
+    <p class="small">한 장씩 넘기면서 마지막 선물까지 와 줘. 💌</p>
+  </section>
+
+  <section class="card center section" id="cakeEnding">
+    <span class="pill">마지막 장 🎂</span>
+    <h2>오빠를 위한 생일 케이크</h2>
+    <p>이제 마지막 선물이야. 소원을 하나 빌어 봐! 🍓</p>
+
+    <div class="cake-scene">
+      <div class="plate"></div>
+      <div class="bottom-cake"></div>
+      <div class="top-cake">
+        <span class="berry b1">🍓</span>
+        <span class="berry b2">🍓</span>
+        <span class="berry b3">🍓</span>
+      </div>
+      <div class="candle"><div class="flame" id="flame"></div></div>
+    </div>
+
+    <p id="candleMessage">눈을 감고 소원을 빌어 봐. 🕯️</p>
+    <div class="row">
+      <button id="blowCandle" class="yellow">후~ 촛불 끄기 🕯️</button>
+      <button id="relightCandle" class="pink">촛불 다시 켜기 ✨</button>
+    </div>
+
+    <div id="birthdayEnding" class="hidden">
+      <hr>
+      <div style="font-size:56px">🎉🎂🎉</div>
+      <h2>생일 축하합니다! 🎶</h2>
+      <p>생일 축하합니다~ 🎵<br>생일 축하합니다~ 🎵<br>사랑하는 정찬 오빠~ 🎵<br>생일 축하합니다~! 🎉</p>
+      <div class="row">
+        <button id="birthdaySong" class="pink">생일 축하 노래 듣기 🎶</button>
+        <button id="stopBirthdaySong" class="blue">노래 멈추기 ⏸</button>
+      </div>
+      <p id="birthdayStatus" class="small">생일 축하 노래를 준비했어. 💗</p>
     </div>
   </section>
 
-  <section class="card center section" id="letterSection">
-    <span class="pill">마지막 선물 💌</span>
-    <h2>오빠에게 보내는 생일 편지</h2>
-    <p>마지막 선물도 열어 볼래?</p>
-    <div class="button-row">
-      <button id="openLetter" class="pink-button">편지 열어 보기 💌</button>
-    </div>
-
-    <div id="letter" class="hidden" style="margin-top:24px">
+  <section class="card center section">
+    <span class="pill">오빠에게 보내는 편지 💌</span>
+    <h2>생일 편지 열어 보기</h2>
+    <div class="row"><button id="openLetter" class="pink">편지 열어 보기 💌</button></div>
+    <div id="letter" class="hidden" style="text-align:left;background:#fffdf6;border:2px solid #f4dce4;border-radius:16px;padding:24px;line-height:2">
       <p>오빠, 생일 축하해! 🎂</p>
       <p>오늘 하루는 맛있는 것도 많이 먹고, 마음 편하게 웃을 수 있는 하루였으면 좋겠어.</p>
       <p>요즘 힘든 일이 있더라도 너무 무리하지 말고, 건강 잘 챙겼으면 좋겠어. 잠도 조금 더 잘 자고, 아픈 곳 없이 지냈으면 좋겠다.</p>
+      <p>밥도 잘 챙겨 먹고, 피곤할 때는 잠깐 쉬어 가도 괜찮아. 매일 모든 걸 완벽하게 해내지 않아도 되니까 너무 무리하지 않았으면 좋겠어.</p>
       <p>올해는 오빠한테 좋은 일들이 많이 생기고, 마음도 지금보다 조금 더 편안해지길 바랄게.</p>
+      <p>힘든 날보다 웃는 날이 더 많고, 아픈 곳 없이 건강하게 지냈으면 좋겠어. 작은 행복도 자주 만나는 한 해가 되길 바라.</p>
       <p>항상 건강하고, 행복하자.</p>
       <p>생일 정말 축하해! 🌷</p>
       <p style="text-align:right">— 생일을 축하하는 마음을 담아서 ♡</p>
@@ -532,363 +397,359 @@ body.dark .card {background:#fffaf0e8;color:#514b5b}
 
   <footer>
     정찬 오빠의 생일을 축하하며 🎂<br>
-    오늘도 건강하고 행복하길 바라. 🌷
+    항상 건강하고 행복하길 바라. 🌷
   </footer>
 </main>
 
 <script>
 (() => {
   "use strict";
+  const $ = id => document.getElementById(id);
 
-  const $ = (id) => document.getElementById(id);
-
-  // 선물 상자와 커튼
+  // 커튼 열기
   $("openGift").addEventListener("click", () => {
-    const curtain = $("curtain");
-    curtain.classList.add("open");
-    $("openGift").disabled = true;
-    window.setTimeout(() => {
-      curtain.style.display = "none";
-      $("games").scrollIntoView({behavior:"smooth",block:"start"});
-    }, 1550);
+    $("curtain").classList.add("open");
+    startMusic();
+    setTimeout(() => {
+      $("curtain").style.display = "none";
+      $("games").scrollIntoView({behavior:"smooth"});
+    },1550);
+  });
+
+  // 음악 재생: 사용자가 버튼을 누르면 유튜브 플레이어 실행
+  const videoId = "9XttLI0oH0I";
+  let musicStarted = false;
+
+  function startMusic() {
+    if (musicStarted) return;
+    musicStarted = true;
+    $("musicPlayer").src =
+      "https://www.youtube-nocookie.com/embed/" + videoId +
+      "?autoplay=1&loop=1&playlist=" + videoId + "&rel=0";
+    $("musicStatus").textContent = "LOVE ATTACK 재생을 요청했어! 🎵";
+  }
+  function stopMusic() {
+    $("musicPlayer").src = "";
+    musicStarted = false;
+    $("musicStatus").textContent = "음악을 멈췄어. 🎵";
+  }
+
+  ["musicButton","musicButton2"].forEach(id =>
+    $(id).addEventListener("click",startMusic)
+  );
+  ["musicStop","musicStop2"].forEach(id =>
+    $(id).addEventListener("click",stopMusic)
+  );
+  $("openYoutube").addEventListener("click",() => {
+    window.open("https://www.youtube.com/watch?v="+videoId,"_blank","noopener");
   });
 
   // 별 잡기 게임
-  let score = 0;
-  let timeLeft = 15;
-  let starTimer = null;
-  let starInterval = null;
-  let gameRunning = false;
-
-  function showStar() {
-    const area = $("gameArea");
-    area.querySelectorAll(".star-target").forEach(el => el.remove());
-
-    if (!gameRunning) return;
-
-    const star = document.createElement("button");
-    star.className = "star-target";
-    star.textContent = ["⭐","🌟","✨"][Math.floor(Math.random()*3)];
+  let score=0,time=15,running=false,timer=null;
+  function placeStar() {
+    if(!running)return;
+    const area=$("starArea");
+    area.querySelectorAll(".star").forEach(s=>s.remove());
+    const star=document.createElement("button");
+    star.className="star";
+    star.textContent=["⭐","🌟","✨"][Math.floor(Math.random()*3)];
     star.setAttribute("aria-label","별 잡기");
-    const maxX = Math.max(0,area.clientWidth-60);
-    const maxY = Math.max(35,area.clientHeight-65);
-    star.style.left = Math.random()*maxX + "px";
-    star.style.top = (35+Math.random()*(maxY-25)) + "px";
-
-    star.addEventListener("click", () => {
-      if (!gameRunning) return;
+    star.style.left=Math.random()*Math.max(0,area.clientWidth-55)+"px";
+    star.style.top=(35+Math.random()*135)+"px";
+    star.addEventListener("click",()=>{
+      if(!running)return;
       score++;
-      $("starScore").textContent = score;
-      star.remove();
-
-      if (score >= 5) {
-        endStars(true);
-      } else {
-        showStar();
-      }
+      $("starScore").textContent=score;
+      if(score>=5){endStars(true);return;}
+      placeStar();
     });
-
     area.appendChild(star);
   }
-
   function endStars(won) {
-    gameRunning = false;
-    clearInterval(starTimer);
-    clearInterval(starInterval);
-    $("gameArea").querySelectorAll(".star-target").forEach(el => el.remove());
-    $("starIntro").textContent = won
-      ? "반짝반짝! 별 다섯 개를 모두 잡았어! 🎉"
-      : "다음에는 별을 다섯 개 잡아 보자! ⭐";
-    $("starResult").textContent = won
-      ? "성공! 오빠에게 행운이 가득하길! 🍀"
-      : "게임 끝! 다시 도전해 봐! 💗";
-    $("startStars").disabled = false;
+    running=false;
+    clearInterval(timer);
+    $("starArea").querySelectorAll(".star").forEach(s=>s.remove());
+    $("starIntro").textContent=won?
+      "별 다섯 개를 모두 잡았어! 정말 잘했어! 🎉":
+      "괜찮아! 다시 도전해 봐! ⭐";
+    $("starResult").textContent=won?
+      "오늘 오빠에게 행운이 가득하길! 🍀":
+      "다음에는 별 다섯 개에 도전해 보자! 💗";
+    $("startStars").disabled=false;
   }
-
-  $("startStars").addEventListener("click", () => {
-    clearInterval(starTimer);
-    clearInterval(starInterval);
-    score = 0;
-    timeLeft = 15;
-    gameRunning = true;
-    $("starScore").textContent = "0";
-    $("starTime").textContent = "15";
-    $("starResult").textContent = "";
-    $("starIntro").textContent = "반짝이는 별을 눌러 잡아 봐! ✨";
-    $("startStars").disabled = true;
-
-    showStar();
-
-    starTimer = setInterval(() => {
-      timeLeft--;
-      $("starTime").textContent = timeLeft;
-      if (timeLeft <= 0) endStars(score >= 5);
+  $("startStars").addEventListener("click",()=>{
+    clearInterval(timer);
+    score=0;time=15;running=true;
+    $("starScore").textContent="0";
+    $("starTime").textContent="15";
+    $("starResult").textContent="";
+    $("starIntro").textContent="반짝이는 별을 눌러 잡아 봐! ✨";
+    $("startStars").disabled=true;
+    placeStar();
+    timer=setInterval(()=>{
+      time--;
+      $("starTime").textContent=time;
+      if(time<=0)endStars(false);
     },1000);
-
-    starInterval = setInterval(() => {
-      if (gameRunning && !$("gameArea").querySelector(".star-target")) {
-        showStar();
-      }
-    },700);
   });
 
   // 퀴즈
-  const questions = [
-    {
-      q:"생일에 가장 중요한 건 뭘까?",
-      a:["건강과 행복","일만 하기","잠 안 자기"],
-      correct:0,
-      result:"맞아! 건강하고 행복한 게 제일 중요하지! 💗"
-    },
-    {
-      q:"오늘 오빠가 꼭 했으면 하는 건?",
-      a:["밥 잘 먹기","하루 종일 걱정하기","잠 안 자기"],
-      correct:0,
-      result:"정답! 밥도 잘 먹고 건강도 챙기자! 🍚"
-    },
-    {
-      q:"새로운 한 해에 오빠에게 필요한 건?",
-      a:["좋은 일과 편안한 마음","더 많은 스트레스","휴식 없는 하루"],
-      correct:0,
-      result:"정답! 좋은 일들이 많이 생기길 바라! 🌷"
-    }
+  const questions=[
+    {q:"생일에 가장 중요한 건 뭘까?",a:["건강과 행복","걱정만 하기","잠 안 자기"],c:0,m:"정답! 건강하고 행복한 게 제일 중요하지! 💗"},
+    {q:"오늘 오빠가 꼭 했으면 하는 건?",a:["밥 잘 챙겨 먹기","계속 일하기","쉬지 않기"],c:0,m:"맞아! 밥도 잘 먹고 건강도 챙기자! 🍚"},
+    {q:"피곤할 때는 어떻게 하는 게 좋을까?",a:["잠깐 쉬기","더 무리하기","잠 안 자기"],c:0,m:"정답! 쉴 때는 편하게 쉬어도 괜찮아. 🌿"},
+    {q:"새로운 한 해에 바라는 건?",a:["좋은 일과 편안한 마음","스트레스 가득한 날","매일 피곤하기"],c:0,m:"맞아! 좋은 일들이 많이 생기길 바라! 🍀"},
+    {q:"매일 조금씩 챙기면 좋은 건?",a:["건강과 충분한 잠","걱정만 하기","끼니 거르기"],c:0,m:"정답! 건강을 잘 챙기는 게 중요해! 🌙"}
   ];
-  let quizIndex = 0;
-
-  function renderQuestion() {
-    const item = questions[quizIndex];
-    $("quizQuestion").textContent =
-      (quizIndex+1) + " / " + questions.length + " · " + item.q;
-    $("quizOptions").innerHTML = "";
-    item.a.forEach((answer,index) => {
-      const btn = document.createElement("button");
-      btn.className = "quiz-option";
-      btn.textContent = answer;
-      btn.addEventListener("click", () => {
-        $("quizResult").textContent = index === item.correct
-          ? item.result
-          : "괜찮아! 정답은 \"" + item.a[item.correct] + "\" 이야. 💕";
-        $("quizOptions").querySelectorAll("button").forEach(b => b.disabled = true);
-
-        const next = document.createElement("button");
-        next.className = "mint-button";
-        next.style.marginTop = "10px";
-        next.textContent = quizIndex < questions.length-1
-          ? "다음 문제 ➜"
-          : "퀴즈 다시 하기 ↻";
-        next.addEventListener("click", () => {
-          quizIndex = quizIndex < questions.length-1 ? quizIndex+1 : 0;
-          renderQuestion();
+  let qi=0;
+  function renderQuiz(){
+    const item=questions[qi];
+    $("quizQuestion").textContent=(qi+1)+" / "+questions.length+" · "+item.q;
+    $("quizOptions").innerHTML="";
+    $("quizResult").textContent="";
+    item.a.forEach((answer,i)=>{
+      const b=document.createElement("button");
+      b.className="quiz-option";
+      b.textContent=answer;
+      b.addEventListener("click",()=>{
+        $("quizOptions").querySelectorAll("button").forEach(x=>x.disabled=true);
+        $("quizResult").textContent=i===item.c?item.m:
+          "괜찮아! 정답은 \""+item.a[item.c]+"\" 이야. 💕";
+        const next=document.createElement("button");
+        next.className="mint";
+        next.style.marginTop="10px";
+        next.textContent=qi<questions.length-1?"다음 문제 →":"다시 퀴즈 풀기 ↻";
+        next.addEventListener("click",()=>{
+          qi=qi<questions.length-1?qi+1:0;
+          renderQuiz();
         });
         $("quizOptions").appendChild(next);
       });
-      $("quizOptions").appendChild(btn);
+      $("quizOptions").appendChild(b);
     });
   }
-
-  $("startQuiz").addEventListener("click", () => {
-    quizIndex = 0;
-    $("quizResult").textContent = "";
-    renderQuestion();
-  });
+  $("startQuiz").addEventListener("click",()=>{qi=0;renderQuiz();});
 
   // 선물 고르기
-  const gifts = {
-    cake:"달콤한 케이크를 골랐네! 오늘 하루 달콤하길! 🎂",
-    star:"반짝이는 별을 골랐네! 오빠에게 좋은 일이 가득하길! ⭐",
-    flower:"예쁜 꽃을 골랐네! 매일 마음이 편안하고 행복하길! 🌷"
+  const gifts={
+    cake:"달콤한 케이크를 골랐네! 오늘 하루도 달콤하길! 🎂",
+    star:"반짝이는 별을 골랐네! 좋은 일이 가득하길! ⭐",
+    flower:"예쁜 꽃을 골랐네! 매일 행복하길 바라! 🌷"
   };
-  document.querySelectorAll("[data-gift]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      $("giftResult").textContent = gifts[btn.dataset.gift];
-    });
+  document.querySelectorAll("[data-gift]").forEach(b=>
+    b.addEventListener("click",()=>{
+      $("giftResult").textContent=gifts[b.dataset.gift];
+    })
+  );
+
+  // 건강 메시지
+  const messages=[
+    "항상 건강하고 아프지 마! 🌷",
+    "밥 잘 챙겨 먹고 잠도 푹 자! 🍚",
+    "오늘은 걱정 없이 많이 웃었으면 좋겠어! ☁️",
+    "힘들 땐 잠깐 쉬어 가도 괜찮아. 💚",
+    "올해는 좋은 일들이 가득하길 바라! 🍀",
+    "너무 무리하지 말고 건강부터 챙겨! 🩵",
+    "오늘 하루도 무사하고 편안하게 보내! 🌙",
+    "맛있는 거 먹고 기분 좋은 하루 보내! 🍰",
+    "잠깐이라도 마음 편히 쉴 수 있길 바라. 🌿",
+    "매일 조금씩 더 행복해지길 바라! 🎀",
+    "오늘도 수고했어. 편안한 밤 보내! 🌙",
+    "작은 행복이 자주 찾아오길 바라! 🌼",
+    "아픈 곳 없이 건강하게 지내자! 💗",
+    "오늘은 스스로에게 조금 더 다정해지기! 🫶",
+    "좋은 사람들과 따뜻한 순간이 가득하길! ☀️",
+    "잘 먹고, 잘 쉬고, 마음도 잘 챙기자! 🌱",
+    "걱정이 많아도 잠깐 내려놓고 쉬어 가자. ☁️",
+    "오빠의 하루가 평온하고 따뜻하길 바라! 🩵",
+    "올해는 웃을 일이 더 많아지길! 😊",
+    "매일매일 건강하고 행복하자! 🎂"
+  ];
+  $("healthButton").addEventListener("click",()=>{
+    let n=Math.floor(Math.random()*messages.length);
+    $("healthMessage").textContent=messages[n];
   });
 
-  // 촛불
-  $("blowCandle").addEventListener("click", () => {
-    $("flame").classList.add("out");
-    $("candleMessage").textContent =
-      "소원이 이루어지길 바라! 생일 축하해! 🎉💗";
-    launchMiniFireworks();
-  });
-
-  $("relightCandle").addEventListener("click", () => {
-    $("flame").classList.remove("out");
-    $("candleMessage").textContent =
-      "다시 반짝반짝! 소원을 하나 더 빌어 봐. ✨";
-  });
+  const healthChoices={
+    meal:"오늘은 맛있는 거 꼭 챙겨 먹기! 🍚",
+    sleep:"오늘 밤은 푹 자고 좋은 꿈 꾸기! 🌙",
+    rest:"잠깐 쉬면서 마음에 여유 주기! 🌿",
+    smile:"오늘은 기분 좋은 일 하나 찾아서 웃기! 😊"
+  };
+  document.querySelectorAll("[data-health]").forEach(b=>
+    b.addEventListener("click",()=>{
+      $("healthChoice").textContent=healthChoices[b.dataset.health];
+    })
+  );
 
   // 한국어 음성
-  $("voiceButton").addEventListener("click", () => {
-    if (!("speechSynthesis" in window)) {
-      $("candleMessage").textContent =
-        "이 브라우저에서는 음성 기능을 지원하지 않아. 🥹";
+  $("voiceButton").addEventListener("click",()=>{
+    if(!("speechSynthesis" in window)){
+      $("musicStatus").textContent="이 브라우저에서는 음성을 지원하지 않아. 🥹";
       return;
     }
-
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(
-      "생일 축하해, 건강하자!"
-    );
-    utterance.lang = "ko-KR";
-    utterance.rate = 0.82;
-    utterance.pitch = 1.12;
-
-    const voices = window.speechSynthesis.getVoices();
-    const koreanVoice = voices.find(v => v.lang.toLowerCase().startsWith("ko"));
-    if (koreanVoice) utterance.voice = koreanVoice;
-
-    window.speechSynthesis.speak(utterance);
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance("생일 축하해, 건강하자!");
+    u.lang="ko-KR";u.rate=.82;u.pitch=1.1;
+    const v=speechSynthesis.getVoices().find(x=>x.lang.toLowerCase().startsWith("ko"));
+    if(v)u.voice=v;
+    speechSynthesis.speak(u);
   });
 
-  // 음악: 버튼을 눌렀을 때 플레이어 표시
-  const videoId = "9XttLI0oH0I";
+  // 책장 넘기기
+  const pages=[
+    {emoji:"📖🌷",title:"오늘의 주인공, 정찬 오빠",text:"오늘은 오빠가 태어난 특별한 날이야.\n생일을 진심으로 축하해! 🎂"},
+    {emoji:"🍚🌿",title:"건강이 제일 중요해",text:"밥도 잘 챙겨 먹고, 잠도 푹 자고,\n아픈 곳 없이 건강하게 지냈으면 좋겠어.\n너무 무리하지 말고 쉬어 가도 괜찮아."},
+    {emoji:"☁️🍀",title:"마음이 편안한 한 해",text:"올해는 좋은 일이 많이 생기고,\n웃는 날이 더 많아지길 바라.\n작은 행복도 자주 찾아오면 좋겠다."},
+    {emoji:"💌🎀",title:"마지막으로 전하고 싶은 말",text:"항상 건강하고 행복하자.\n오늘 하루는 맛있는 것도 많이 먹고,\n마음 편하게 웃을 수 있길 바라.\n생일 정말 축하해! ♡"}
+  ];
+  let page=0;
+  function renderPage(){
+    const p=pages[page];
+    $("pageCount").textContent="PAGE "+(page+1)+" / "+pages.length;
+    $("pageEmoji").textContent=p.emoji;
+    $("pageTitle").textContent=p.title;
+    $("pageText").textContent=p.text;
+    $("prevPage").disabled=page===0;
+    $("nextPage").textContent=page===pages.length-1?"마지막 선물 보기 🎂":"다음 페이지 →";
+  }
+  $("prevPage").addEventListener("click",()=>{
+    if(page>0){page--;renderPage();}
+  });
+  $("nextPage").addEventListener("click",()=>{
+    if(page<pages.length-1){page++;renderPage();}
+    else $("cakeEnding").scrollIntoView({behavior:"smooth"});
+  });
+  renderPage();
 
-  $("playMusic").addEventListener("click", () => {
-    $("musicContainer").innerHTML = "";
-    const iframe = document.createElement("iframe");
-    iframe.id = "musicFrame";
-    iframe.title = "LOVE ATTACK 음악 플레이어";
-    iframe.src = "https://www.youtube-nocookie.com/embed/" +
-      videoId + "?autoplay=1&rel=0";
-    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
-    iframe.allowFullscreen = true;
-    $("musicContainer").appendChild(iframe);
-    $("playMusic").textContent = "노래 다시 재생하기 ▶";
+  // 편지 열기
+  $("openLetter").addEventListener("click",()=>{
+    const l=$("letter");
+    const opening=l.classList.contains("hidden");
+    l.classList.toggle("hidden");
+    $("openLetter").textContent=opening?"편지 닫기 💌":"편지 열어 보기 💌";
+    if(opening)setTimeout(()=>l.scrollIntoView({behavior:"smooth",block:"center"}),100);
   });
 
-  $("stopMusic").addEventListener("click", () => {
-    $("musicContainer").innerHTML = "";
-    $("playMusic").textContent = "노래 재생하기 ▶";
-  });
-
-  $("openMusic").addEventListener("click", () => {
-    window.open(
-      "https://www.youtube.com/watch?v=" + videoId,
-      "_blank",
-      "noopener"
-    );
-  });
-
-  // 편지 열기 / 닫기
-  $("openLetter").addEventListener("click", () => {
-    const letter = $("letter");
-    const opening = letter.classList.contains("hidden");
-    letter.classList.toggle("hidden");
-    $("openLetter").textContent = opening
-      ? "편지 닫기 💌"
-      : "편지 열어 보기 💌";
-    if (opening) {
-      window.setTimeout(() => {
-        letter.scrollIntoView({behavior:"smooth",block:"center"});
-      },100);
-    }
-  });
-
-  // 깜짝 블랙 테마와 불꽃놀이
-  const canvas = $("fireworks");
-  const ctx = canvas.getContext("2d");
-  let particles = [];
-  let fireworkFrame = null;
-  let darkTimeout = null;
-  let nextThemeTimeout = null;
-  let darkActive = false;
-
-  function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1,2);
-    canvas.width = Math.floor(window.innerWidth*dpr);
-    canvas.height = Math.floor(window.innerHeight*dpr);
-    canvas.style.width = window.innerWidth+"px";
-    canvas.style.height = window.innerHeight+"px";
+  // 불꽃놀이: 직접 눌렀을 때만
+  const fc=$("fireworksCanvas"),ctx=fc.getContext("2d");
+  let particles=[],frame=null,fireworkOn=false;
+  function resize(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    fc.width=innerWidth*dpr;fc.height=innerHeight*dpr;
+    fc.style.width=innerWidth+"px";fc.style.height=innerHeight+"px";
     ctx.setTransform(dpr,0,0,dpr,0,0);
   }
-  window.addEventListener("resize",resizeCanvas);
-  resizeCanvas();
+  addEventListener("resize",resize);resize();
 
-  function burst(x,y) {
-    const colors = ["#ff8fc8","#ffe7a0","#b9f6df","#b8d8ff","#ffffff"];
-    for(let i=0;i<65;i++) {
-      const angle = Math.random()*Math.PI*2;
-      const speed = 1.2+Math.random()*4;
-      particles.push({
-        x,y,
-        vx:Math.cos(angle)*speed,
-        vy:Math.sin(angle)*speed,
-        life:45+Math.random()*35,
-        maxLife:80,
-        color:colors[Math.floor(Math.random()*colors.length)],
-        size:1.5+Math.random()*2.5
-      });
+  function burst(x,y){
+    const colors=["#ff8fc8","#ffe7a0","#b9f6df","#b8d8ff","#ffffff"];
+    for(let i=0;i<60;i++){
+      const a=Math.random()*Math.PI*2,s=1+Math.random()*4;
+      particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,
+        life:65,max:65,c:colors[Math.floor(Math.random()*colors.length)]});
     }
   }
-
-  function animateFireworks() {
-    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-
-    if (Math.random()<0.045) {
-      burst(
-        window.innerWidth*(0.12+Math.random()*0.76),
-        window.innerHeight*(0.22+Math.random()*0.48)
-      );
-    }
-
-    particles = particles.filter(p => p.life>0);
-    particles.forEach(p => {
-      p.x+=p.vx;
-      p.y+=p.vy;
-      p.vy+=0.035;
-      p.vx*=0.99;
-      p.life--;
-      ctx.globalAlpha=Math.max(0,p.life/p.maxLife);
-      ctx.fillStyle=p.color;
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-      ctx.fill();
+  function animate(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    if(Math.random()<.045)burst(innerWidth*(.15+Math.random()*.7),innerHeight*(.25+Math.random()*.4));
+    particles=particles.filter(p=>p.life>0);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.life--;
+      ctx.globalAlpha=p.life/p.max;ctx.fillStyle=p.c;
+      ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);ctx.fill();
     });
     ctx.globalAlpha=1;
-
-    if (darkActive) {
-      fireworkFrame=requestAnimationFrame(animateFireworks);
-    }
+    if(fireworkOn)frame=requestAnimationFrame(animate);
   }
-
-  function launchMiniFireworks() {
-    burst(window.innerWidth*0.5,window.innerHeight*0.4);
+  function closeFireworks(){
+    fireworkOn=false;
+    $("fireworksScreen").classList.remove("show");
+    if(frame)cancelAnimationFrame(frame);
+    frame=null;ctx.clearRect(0,0,innerWidth,innerHeight);
   }
-
-  function showDarkTheme() {
-    if (darkActive) return;
-    darkActive = true;
-    document.body.classList.add("dark");
-    $("blackTheme").setAttribute("aria-hidden","false");
-    particles = [];
-    burst(window.innerWidth*0.25,window.innerHeight*0.4);
-    burst(window.innerWidth*0.72,window.innerHeight*0.45);
-    animateFireworks();
-
-    darkTimeout = window.setTimeout(hideDarkTheme,6500);
-  }
-
-  function hideDarkTheme() {
-    darkActive = false;
-    clearTimeout(darkTimeout);
-    document.body.classList.remove("dark");
-    $("blackTheme").setAttribute("aria-hidden","true");
-    if (fireworkFrame) cancelAnimationFrame(fireworkFrame);
-    fireworkFrame = null;
-    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-
-    nextThemeTimeout = window.setTimeout(showDarkTheme,22000);
-  }
-
-  $("skipFireworks").addEventListener("click",hideDarkTheme);
-
-  // Mulakan kejutan tema selepas langsir dibuka
-  $("openGift").addEventListener("click", () => {
-    if (nextThemeTimeout) clearTimeout(nextThemeTimeout);
-    nextThemeTimeout = window.setTimeout(showDarkTheme,18000);
+  $("showFireworks").addEventListener("click",()=>{
+    $("fireworksScreen").classList.add("show");
+    fireworkOn=true;particles=[];
+    burst(innerWidth*.3,innerHeight*.4);burst(innerWidth*.7,innerHeight*.45);
+    animate();
   });
+  $("closeFireworks").addEventListener("click",closeFireworks);
 
+  // 생일 케이크와 마지막 노래
+  let audioContext=null,birthdayTimers=[];
+  function stopBirthday(){
+    birthdayTimers.forEach(clearTimeout);
+    birthdayTimers=[];
+    if(audioContext){audioContext.close();audioContext=null;}
+    if("speechSynthesis" in window)speechSynthesis.cancel();
+  }
+
+  function playBirthday(){
+    stopBirthday();
+    $("birthdayStatus").textContent="생일 축하 노래가 시작됐어! 🎶";
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx){
+      $("birthdayStatus").textContent="이 브라우저에서는 멜로디를 재생할 수 없어. 🥹";
+      return;
+    }
+    audioContext=new AudioCtx();
+    audioContext.resume();
+
+    // 생일 축하합니다 멜로디
+    const notes=[
+      [392,.35],[392,.35],[440,.7],[392,.7],[523,.7],[494,1.1],
+      [392,.35],[392,.35],[440,.7],[392,.7],[587,.7],[523,1.1],
+      [392,.35],[392,.35],[784,.7],[659,.7],[523,.7],[494,.7],[440,1.1],
+      [698,.35],[698,.35],[659,.7],[523,.7],[587,.7],[523,1.2]
+    ];
+    let t=audioContext.currentTime+.15;
+    notes.forEach(([freq,dur])=>{
+      const start=t;
+      const osc=audioContext.createOscillator();
+      const gain=audioContext.createGain();
+      osc.type="sine";osc.frequency.value=freq;
+      gain.gain.setValueAtTime(.0001,start);
+      gain.gain.exponentialRampToValueAtTime(.17,start+.025);
+      gain.gain.setValueAtTime(.17,start+dur*.72);
+      gain.gain.exponentialRampToValueAtTime(.0001,start+dur);
+      osc.connect(gain);gain.connect(audioContext.destination);
+      osc.start(start);osc.stop(start+dur+.03);
+      t+=dur+.045;
+    });
+
+    // 한국어 축하 인사도 함께
+    const delay=(t-audioContext.currentTime)*1000+150;
+    birthdayTimers.push(setTimeout(()=>{
+      if("speechSynthesis" in window){
+        const u=new SpeechSynthesisUtterance("생일 축하합니다. 생일 축하합니다. 사랑하는 정찬 오빠, 생일 축하합니다!");
+        u.lang="ko-KR";u.rate=.82;u.pitch=1.05;
+        const v=speechSynthesis.getVoices().find(x=>x.lang.toLowerCase().startsWith("ko"));
+        if(v)u.voice=v;
+        speechSynthesis.speak(u);
+      }
+    },Math.max(0,delay)));
+  }
+
+  $("blowCandle").addEventListener("click",()=>{
+    $("flame").classList.add("out");
+    $("candleMessage").textContent="소원이 이루어지길 바라! 생일 축하해! 🎉";
+    $("birthdayEnding").classList.remove("hidden");
+    stopMusic();
+    $("birthdayEnding").scrollIntoView({behavior:"smooth",block:"center"});
+    playBirthday();
+  });
+  $("relightCandle").addEventListener("click",()=>{
+    stopBirthday();
+    $("flame").classList.remove("out");
+    $("birthdayEnding").classList.add("hidden");
+    $("candleMessage").textContent="다시 반짝반짝! 소원을 하나 더 빌어 봐. ✨";
+  });
+  $("birthdaySong").addEventListener("click",playBirthday);
+  $("stopBirthdaySong").addEventListener("click",()=>{
+    stopBirthday();
+    $("birthdayStatus").textContent="노래를 멈췄어. 🎵";
+  });
 })();
 </script>
 </body>
