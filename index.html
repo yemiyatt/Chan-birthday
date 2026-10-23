@@ -1,212 +1,2133 @@
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>오빠, 생일 축하해 🖤</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#dff7ee">
+<title>Happy Birthday, Chan! ♡</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;background:#090909;color:#f5f5f5;
- font-family:Arial,"Malgun Gothic",sans-serif;
- text-align:center;min-height:100vh;overflow-x:hidden;
- display:flex;justify-content:center;align-items:center;padding:25px 18px
+:root {
+  --mint: #d8f5e8;
+  --mint-dark: #8fcdb4;
+  --pink: #ffdce8;
+  --pink-dark: #ef9fbd;
+  --blue: #dcecff;
+  --blue-dark: #8eb9ec;
+  --yellow: #fff0b7;
+  --yellow-dark: #e8c86b;
+  --cream: #fffdf7;
+  --ink: #5d6277;
+  --muted: #898da0;
 }
-#stars{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-.star{position:absolute;color:white;animation:twinkle 3s infinite alternate}
-@keyframes twinkle{to{opacity:.2;transform:scale(.7)}}
-main{width:100%;max-width:430px;position:relative;z-index:1}
-.page{display:none;animation:fade .6s ease}
-.page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.tag{font-size:10px;letter-spacing:4px;color:#999;margin-bottom:25px}
-h1{font-size:38px;font-weight:400;line-height:1.5}
-h2{font-size:25px;font-weight:400;line-height:1.6}
-p{font-size:14px;color:#bbb;line-height:2;word-break:keep-all}
-button{cursor:pointer;font-size:13px;padding:13px 20px;border-radius:30px;
- border:1px solid #777;background:transparent;color:white;margin:7px}
-button:hover{background:white;color:black}
-.primary{background:white;color:black}
-.music{position:fixed;right:12px;top:12px;z-index:5;font-size:11px;padding:9px 13px}
-.envelope{width:190px;height:125px;background:#eee;margin:45px auto 35px;
- position:relative;cursor:pointer;border-radius:3px}
-.envelope:before{content:"";position:absolute;inset:0;
- background:linear-gradient(35deg,transparent 49%,#ccc 50%) left/50% 100% no-repeat,
- linear-gradient(-35deg,transparent 49%,#ddd 50%) right/50% 100% no-repeat}
-.flap{position:absolute;top:0;left:0;width:0;height:0;
- border-left:95px solid transparent;border-right:95px solid transparent;
- border-top:72px solid white;transform-origin:top;transition:.7s;z-index:3}
-.letter{position:absolute;top:12px;left:15px;width:160px;height:95px;
- background:white;color:#111;display:grid;place-items:center;font-size:10px;
- letter-spacing:2px;transition:.8s}
-.seal{position:absolute;z-index:4;top:48px;left:81px;border:1px solid #111;
- color:#111;border-radius:50%;padding:7px;background:white}
-.envelope.open .flap{transform:rotateX(180deg)}
-.envelope.open .letter{transform:translateY(-60px)}
-.envelope.open .seal{opacity:0}
-.cake{font-size:85px;margin:30px 0 10px;cursor:pointer}
-.candle{font-size:30px;cursor:pointer}
-.rule{width:45px;height:1px;background:#777;margin:25px auto}
-.count{font-size:11px;color:#888;letter-spacing:3px}
-#confetti{position:fixed;inset:0;pointer-events:none;z-index:9}
-.fall{position:absolute;top:-20px;color:white;animation:fall 3s linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:0}}
-footer{margin-top:55px;color:#555;font-size:9px;letter-spacing:3px}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 15%, #fff0b9 0 5%, transparent 5.5%),
+    radial-gradient(circle at 90% 22%, #ffdce8 0 6%, transparent 6.5%),
+    radial-gradient(circle at 10% 78%, #d8f5e8 0 7%, transparent 7.5%),
+    linear-gradient(145deg, #fff9f1, #edf9ff 48%, #fff0f5);
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+  outline: 3px solid #91b9ec;
+  outline-offset: 4px;
+}
+
+button:disabled { opacity: .55; cursor: default; }
+
+.hidden { display: none !important; }
+
+#decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floaty {
+  position: absolute;
+  opacity: .65;
+  animation: float 5s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-15px) rotate(7deg); }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  margin: auto;
+  padding: 24px 17px 50px;
+}
+
+.top-note {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #8a9aab;
+  margin: 5px 0 20px;
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,.86);
+  border: 2px solid rgba(255,255,255,.96);
+  border-radius: 28px;
+  padding: 27px 20px;
+  margin: 18px 0;
+  box-shadow: 0 12px 35px rgba(130,157,179,.13);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 5px;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(90deg, var(--mint-dark), var(--yellow-dark),
+    var(--pink-dark), var(--blue-dark));
+}
+
+h1, h2, h3, p { position: relative; }
+
+h1 {
+  font-size: clamp(34px, 8vw, 56px);
+  line-height: 1.1;
+  color: #e58bab;
+  margin: 10px 0;
+  text-shadow: 2px 3px 0 #fff0b7;
+}
+
+h2 { color: #7fb8a4; margin: 7px 0 14px; }
+h3 { color: #8baed8; }
+
+p { line-height: 1.8; }
+
+.kicker {
+  display: inline-block;
+  border-radius: 30px;
+  background: var(--yellow);
+  padding: 8px 14px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #947c42;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.primary, .secondary, .choice {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 20px;
+  margin: 6px;
+  min-height: 44px;
+  transition: transform .18s, box-shadow .18s;
+}
+
+.primary {
+  background: linear-gradient(120deg, #b8ead7, #d5efff);
+  box-shadow: 0 5px 0 #a3d3c9;
+  color: #4c7774;
+  font-weight: bold;
+}
+
+.secondary {
+  background: #fff0b7;
+  box-shadow: 0 4px 0 #ead28c;
+  color: #88743e;
+}
+
+.choice {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  background: #f5f8ff;
+  border: 2px solid #e0e9fa;
+  color: #68748b;
+}
+
+.primary:hover, .secondary:hover, .choice:hover {
+  transform: translateY(-2px);
+}
+
+.primary:active, .secondary:active { transform: translateY(2px); }
+
+.sticker-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 29px;
+  margin: 17px 0;
+}
+
+.sticker-row span:nth-child(2) { animation-delay: .8s; }
+.sticker-row span:nth-child(3) { animation-delay: 1.4s; }
+
+.game-status {
+  background: #effaf4;
+  padding: 10px;
+  border-radius: 14px;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+#starField {
+  position: relative;
+  height: 250px;
+  border-radius: 22px;
+  background: linear-gradient(150deg, #e7f6ff, #fff0f6);
+  overflow: hidden;
+  border: 2px dashed #cbdff1;
+  touch-action: manipulation;
+}
+
+.star-target {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  font-size: 29px;
+  padding: 5px;
+  animation: pop .25s ease-out;
+}
+
+@keyframes pop {
+  from { transform: scale(.2); }
+  to { transform: scale(1); }
+}
+
+.quiz-option { text-align: left; }
+
+.feedback {
+  min-height: 25px;
+  font-size: 14px;
+  color: #80a99b;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.gift {
+  background: #fff8dc;
+  border: 2px solid #f4e7b8;
+  border-radius: 18px;
+  padding: 15px 5px;
+  font-size: 37px;
+  min-width: 0;
+}
+
+.gift small {
+  display: block;
+  font-size: 11px;
+  margin-top: 8px;
+  color: #99865a;
+}
+
+.gift.selected {
+  border-color: #eaa3bd;
+  background: #fff0f6;
+  transform: translateY(-4px);
+}
+
+/* Pastel realistic layered cake */
+.cake-stage {
+  height: 330px;
+  max-width: 440px;
+  margin: 5px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  padding-bottom: 25px;
+  perspective: 800px;
+}
+
+.cake-shadow {
+  position: absolute;
+  bottom: 19px;
+  width: 86%;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(105,128,145,.15);
+  filter: blur(8px);
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: 17px;
+  width: 95%;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(#fff, #e6eaf2 70%, #d4dce8);
+  border: 2px solid #fff;
+  box-shadow: 0 7px 0 #cbd6e2, inset 0 2px 4px white;
+}
+
+.cake {
+  width: 78%;
+  max-width: 320px;
+  height: 215px;
+  position: relative;
+  margin-bottom: 34px;
+  filter: drop-shadow(0 8px 5px rgba(102,113,126,.12));
+  animation: cakeEnter .8s ease-out;
+}
+
+@keyframes cakeEnter {
+  from { opacity: 0; transform: translateY(30px) scale(.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cake-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 125px;
+  border-radius: 12px 12px 22px 22px;
+  background:
+    linear-gradient(90deg, rgba(210,137,120,.18), transparent 18% 80%, rgba(190,114,102,.14)),
+    repeating-linear-gradient(0deg, transparent 0 32px, rgba(255,255,255,.32) 33px 36px),
+    linear-gradient(#f7cbbd, #f3bba9 65%, #e9a894);
+  box-shadow: inset 0 5px 8px rgba(255,255,255,.7),
+    inset 0 -8px 10px rgba(183,105,90,.12);
+}
+
+.cake-bottom::before {
+  content: "";
+  position: absolute;
+  top: 33px;
+  width: 100%;
+  height: 12px;
+  background: #fff0d9;
+  box-shadow: 0 2px 3px rgba(165,110,90,.1);
+}
+
+.cake-top {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff9ee, #f6d9cb);
+  border: 2px solid #ffece0;
+  box-shadow: inset 0 4px 5px white, 0 4px 4px rgba(181,124,107,.12);
+  z-index: 2;
+}
+
+.frosting {
+  position: absolute;
+  z-index: 3;
+  top: 70px;
+  left: -1%;
+  width: 102%;
+  height: 48px;
+  border-radius: 12px 12px 22px 22px;
+  background: linear-gradient(180deg, #fffefa, #fff0f0);
+  box-shadow: inset 0 5px 5px white, 0 4px 4px rgba(178,124,119,.12);
+}
+
+.frosting::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, white, #fff3f0);
+}
+
+.drip {
+  position: absolute;
+  z-index: 4;
+  top: 97px;
+  width: 18px;
+  height: 24px;
+  background: #fff2ef;
+  border-radius: 0 0 12px 12px;
+}
+.drip.one { left: 12%; height: 32px; }
+.drip.two { left: 38%; height: 20px; }
+.drip.three { right: 22%; height: 28px; }
+.drip.four { right: 7%; height: 18px; }
+
+.berry {
+  position: absolute;
+  top: 49px;
+  z-index: 5;
+  width: 25px;
+  height: 31px;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(110deg, #ff9aaa, #e95170 60%, #bd3457);
+  box-shadow: inset 4px 0 4px rgba(255,255,255,.35),
+    inset -3px 0 4px rgba(120,25,48,.12);
+  transform: rotate(-8deg);
+}
+
+.berry::before {
+  content: "✦";
+  position: absolute;
+  top: -10px;
+  left: 4px;
+  color: #77b98c;
+  font-size: 14px;
+}
+
+.berry::after {
+  content: "· ·";
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  color: #ffe7a8;
+  font-size: 14px;
+  line-height: 12px;
+}
+
+.berry.b1 { left: 15%; transform: rotate(-16deg) scale(.9); }
+.berry.b2 { left: 43%; top: 42px; }
+.berry.b3 { right: 15%; transform: rotate(12deg) scale(.95); }
+
+.cream-dot {
+  position: absolute;
+  top: 53px;
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 35% 25%, white, #ffe9e9 70%, #eec9d3);
+  border-radius: 50%;
+  box-shadow: 0 2px 3px rgba(170,120,120,.12);
+}
+.cream-dot.d1 { left: 29%; }
+.cream-dot.d2 { right: 29%; }
+
+.candle {
+  position: absolute;
+  z-index: 6;
+  top: 7px;
+  left: calc(50% - 5px);
+  height: 49px;
+  width: 10px;
+  border-radius: 5px;
+  background: repeating-linear-gradient(135deg, #8ed5be 0 5px, #fff 5px 10px);
+  box-shadow: inset 2px 0 2px rgba(255,255,255,.8);
+}
+
+.flame {
+  position: absolute;
+  top: -23px;
+  left: -5px;
+  width: 20px;
+  height: 27px;
+  border-radius: 60% 40% 60% 40%;
+  transform: rotate(2deg);
+  background: radial-gradient(ellipse at 50% 70%, #fff9c6 0 25%, #ffcb66 45%, #ff9d79 72%);
+  filter: drop-shadow(0 0 8px #ffd67a);
+  animation: flicker .65s infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes flicker {
+  from { transform: rotate(-5deg) scale(.96); }
+  to { transform: rotate(6deg) scale(1.05); }
+}
+
+.cake-out .flame { display: none; }
+
+.cake-controls { margin-top: 0; }
+
+.birthday-note {
+  background: linear-gradient(135deg, #fff5f8, #f0fbf6 55%, #f0f6ff);
+  border: 1px solid #fff;
+  border-radius: 22px;
+  padding: 23px 18px;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 2;
+  font-size: 15px;
+}
+
+.korean-big {
+  text-align: center;
+  color: #df8eac;
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+#musicFrame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  border-radius: 17px;
+  margin-top: 12px;
+  background: #e8f4ef;
+}
+
+footer {
+  text-align: center;
+  color: #9da4b4;
+  font-size: 12px;
+  padding: 15px;
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 20;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(700deg); opacity: .1; }
+}
+
+/* Opening curtains */
+#curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  pointer-events: none;
+  transition: visibility .9s;
+}
+#curtain.gone { visibility: hidden; }
+
+.curtain-panel {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(255,255,255,.25), transparent 45%),
+    repeating-linear-gradient(90deg, #f6a8c0 0 12px, #ed91b1 12px 24px, #f7b9cc 24px 36px);
+  box-shadow: inset 0 0 35px rgba(150,76,105,.16);
+  transition: transform 1.35s cubic-bezier(.72,0,.2,1);
+}
+.curtain-panel.left { border-right: 3px solid #ffe3a4; }
+.curtain-panel.right { border-left: 3px solid #ffe3a4; }
+
+.curtain-panel::after {
+  content: "✦  ♡  ✦  ♡  ✦  ♡  ✦";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+  text-align: center;
+  color: rgba(255,255,255,.7);
+  font-size: 18px;
+  line-height: 3;
+  overflow: hidden;
+}
+
+#curtain.open .left { transform: translateX(-105%); }
+#curtain.open .right { transform: translateX(105%); }
+
+.curtain-label {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(22px, 5vw, 35px);
+  color: #fffdf8;
+  text-shadow: 0 3px 8px rgba(140,80,100,.15);
+  padding: 15px;
+  z-index: 101;
+  transition: opacity .4s;
+}
+#curtain.open .curtain-label { opacity: 0; }
+
+@media (max-width: 420px) {
+  main { padding: 16px 12px 35px; }
+  .panel { padding: 25px 15px; }
+  .cake-stage { height: 290px; }
+  .cake { transform: scale(.91); transform-origin: bottom center; }
+}
 </style>
 </head>
+
 <body>
-<div id="stars"></div>
-<div id="confetti"></div>
-<button class="music" id="music">♪ 음악 켜기</button>
+<div id="decor" aria-hidden="true"></div>
+
+<div id="curtain">
+  <div class="curtain-panel left"></div>
+  <div class="curtain-panel right"></div>
+  <div class="curtain-label" id="curtainLabel">
+    <div>🎀 A little birthday surprise 🎀</div>
+    <p style="font-size:15px">made just for you ♡</p>
+    <button class="primary" id="openBtn" style="pointer-events:auto">
+      Open your gift ✨
+    </button>
+  </div>
+</div>
 
 <main>
-<section class="page active" id="p0">
- <div class="tag">A LITTLE SURPRISE FOR YOU</div>
- <h1>오빠,<br>생일 축하해.</h1>
- <div class="envelope" id="env" role="button" tabindex="0">
-  <div class="letter">FOR YOUR BIRTHDAY</div>
-  <div class="flap"></div><div class="seal">✦</div>
- </div>
- <p>작은 선물을 준비했어.<br>천천히 눌러봐 :)</p>
- <button class="primary" onclick="openLetter()">오빠, 눌러봐 ↗</button>
-</section>
+  <div class="top-note">A LITTLE WEBSITE MADE WITH CARE ♡</div>
 
-<section class="page" id="p1">
- <div class="tag">HAPPY BIRTHDAY</div>
- <h2>오늘은 오빠의 날이니까.</h2>
- <div class="cake">🎂</div>
- <div class="candle" id="candle" onclick="blow()">🕯️</div>
- <p id="wish">초를 눌러서 소원을 빌어봐.<br>좋은 일이 많이 생기길 바라.</p>
- <button onclick="blow()">초 끄기 ✧</button>
- <button class="primary" onclick="go(2)">다음 →</button>
-</section>
+  <section class="panel" id="welcome">
+    <div class="sticker-row"><span>🌷</span><span>🎂</span><span>🧸</span></div>
+    <span class="kicker">SPECIAL DAY · OCTOBER 23</span>
+    <h1>Happy Birthday,<br>Chan! ♡</h1>
+    <p class="subtitle">오늘은 오빠의 특별한 날이야 ✨</p>
+    <p>A tiny birthday world, made just for you.</p>
+    <button class="primary" onclick="showSection('game1')">
+      Let's play! 🎮
+    </button>
+    <div class="sticker-row"><span>☁️</span><span>⭐</span><span>🍰</span></div>
+  </section>
 
-<section class="page" id="p2">
- <div class="tag">A FEW WORDS FOR YOU</div>
- <div class="count" id="count">01 / 04</div>
- <h2 id="mtitle">오빠, 생일 축하해.</h2>
- <div class="rule"></div>
- <p id="msg">오늘 하루 편안하고 행복하게 보냈으면 좋겠어.</p>
- <button id="prev" onclick="change(-1)">← 이전</button>
- <button class="primary" id="next" onclick="change(1)">다음 →</button>
-</section>
+  <section class="panel" id="game1">
+    <span class="kicker">LEVEL 01 · STAR CATCHER</span>
+    <h2>Catch the little stars! ⭐</h2>
+    <p>Tap 5 stars before the time runs out.</p>
+    <div class="game-status" id="starStatus">Stars: 0 / 5 · Time: 15s</div>
+    <div id="starField" aria-label="Tap the stars here"></div>
+    <p class="feedback" id="starFeedback">Ready, birthday boy? ♡</p>
+    <button class="primary" id="startStars">Start game ✨</button>
+    <button class="secondary hidden" id="nextToQuiz" onclick="showSection('game2')">
+      Next level →
+    </button>
+  </section>
 
-<section class="page" id="p3">
- <div class="tag">ONE LAST WISH</div>
- <div style="font-size:40px;margin:25px">✦</div>
- <h1>생일 축하해,<br>오빠.</h1>
- <div class="rule"></div>
- <p>
- 항상 건강하고, 잠도 잘 자고,<br>
- 앞으로는 좋은 일들이 더 많았으면 좋겠어.<br><br>
- 오늘도, 그리고 앞으로의 날들도<br>
- 무리하지 말고 잘 지내길 바라.
- </p>
- <p style="font-size:12px;color:#888">이 마음만 조용히 전하고 싶었어.</p>
- <button class="primary" onclick="celebrate()">마지막으로 눌러봐 ✧</button>
- <button onclick="restart()">처음부터 보기 ↺</button>
-</section>
-<footer>MADE WITH GOOD WISHES · FOR CHAN</footer>
+  <section class="panel" id="game2">
+    <span class="kicker">LEVEL 02 · QUICK QUIZ</span>
+    <h2>Birthday mini quiz 🧸</h2>
+    <p>Three little questions. Choose your answer!</p>
+    <div class="game-status" id="quizProgress">Question 1 of 3</div>
+    <h3 id="quizQuestion">Which one is a birthday cake?</h3>
+    <div id="quizOptions"></div>
+    <p class="feedback" id="quizFeedback"></p>
+    <button class="primary hidden" id="nextQuestion">Next question →</button>
+    <button class="secondary hidden" id="nextToGift" onclick="showSection('game3')">
+      Choose your gift 🎁
+    </button>
+  </section>
+
+  <section class="panel" id="game3">
+    <span class="kicker">LEVEL 03 · PICK A PRESENT</span>
+    <h2>Choose one gift! 🎁</h2>
+    <p>No wrong choices. Pick whichever you like.</p>
+    <div class="gift-grid">
+      <button class="gift" data-gift="star" aria-label="Star gift">⭐<small>Lucky star</small></button>
+      <button class="gift" data-gift="cake" aria-label="Cake gift">🍰<small>Sweet cake</small></button>
+      <button class="gift" data-gift="bear" aria-label="Bear gift">🧸<small>Little friend</small></button>
+    </div>
+    <p class="feedback" id="giftMessage">Your present is waiting ♡</p>
+    <button class="primary" id="nextToCake" disabled>
+      Time for cake! 🎂
+    </button>
+  </section>
+
+  <section class="panel" id="cakeSection">
+    <span class="kicker">THE BIRTHDAY CAKE</span>
+    <h2>Make a little wish ✨</h2>
+    <p>One candle, one wish. Take your time.</p>
+
+    <div class="cake-stage">
+      <div class="cake-shadow"></div>
+      <div class="cake-plate"></div>
+      <div class="cake" id="cake">
+        <div class="cake-bottom"></div>
+        <div class="cake-top"></div>
+        <div class="frosting"></div>
+        <div class="drip one"></div>
+        <div class="drip two"></div>
+        <div class="drip three"></div>
+        <div class="drip four"></div>
+        <div class="berry b1"></div>
+        <div class="berry b2"></div>
+        <div class="berry b3"></div>
+        <div class="cream-dot d1"></div>
+        <div class="cream-dot d2"></div>
+        <div class="candle"><div class="flame" id="flame"></div></div>
+      </div>
+    </div>
+
+    <div class="cake-controls">
+      <button class="primary" id="blowBtn">Blow the candle! 💨</button>
+      <button class="secondary" id="relightBtn">Light it again 🕯️</button>
+    </div>
+    <p class="feedback" id="cakeMessage">Make a wish, then blow! ♡</p>
+    <button class="primary" onclick="showSection('birthdayMessage')">
+      Read your birthday letter 💌
+    </button>
+  </section>
+
+  <section class="panel" id="birthdayMessage">
+    <span class="kicker">A LITTLE BIRTHDAY LETTER</span>
+    <div class="sticker-row"><span>💌</span><span>🌼</span><span>☁️</span></div>
+    <h2>생일 축하해, 찬 오빠 ♡</h2>
+
+    <div class="birthday-note">오빠, 생일 축하해! 🎂
+
+오늘 하루는 맛있는 것도 많이 먹고, 마음 편하게 웃을 수 있는 하루였으면 좋겠어.
+
+요즘 힘든 일이 있더라도 너무 무리하지 말고, 건강 잘 챙겼으면 좋겠어. 잠도 조금 더 잘 자고, 아픈 곳 없이 지냈으면 좋겠다.
+
+올해는 오빠한테 좋은 일들이 많이 생기고, 마음도 지금보다 조금 더 편안해지길 바랄게.
+
+항상 건강하고, 행복하자.
+생일 정말 축하해! 🌷
+
+— 생일을 축하하는 마음을 담아서 ♡</div>
+
+    <p class="korean-big">생일 축하해, 건강하자! 🩵</p>
+    <button class="primary" id="voiceBtn">🔊 들어봐!</button>
+    <p class="subtitle">Tap to hear a little birthday wish in Korean.</p>
+    <button class="secondary" onclick="showSection('musicSection')">
+      One last little surprise 🎵
+    </button>
+  </section>
+
+  <section class="panel" id="musicSection">
+    <span class="kicker">ONE LAST SURPRISE</span>
+    <h2>A little song for today 🎵</h2>
+    <p>Enjoy your birthday, at your own pace ♡</p>
+    <div class="sticker-row"><span>🎧</span><span>💿</span><span>🌈</span></div>
+    <p><strong>RESCENE — LOVE ATTACK</strong></p>
+    <p class="subtitle">Tap below to load the music video.</p>
+    <button class="primary" id="musicBtn">Play LOVE ATTACK ▶</button>
+    <div id="musicContainer"></div>
+    <p class="subtitle">If the video doesn't load here, you can open it on YouTube.</p>
+    <button class="secondary" id="youtubeBtn">Open on YouTube ↗</button>
+    <p class="korean-big">오늘도 좋은 하루 보내! 🌼</p>
+    <button class="primary" onclick="celebrateAgain()">A little more confetti! 🎉</button>
+    <button class="secondary" onclick="restartAll()">Start again ↺</button>
+  </section>
+
+  <footer>Made with care · 생일 축하해 ♡</footer>
 </main>
 
 <script>
-const starBox=document.getElementById("stars");
-for(let i=0;i<45;i++){
- let s=document.createElement("span");
- s.className="star";s.textContent=Math.random()>.5?"✦":"·";
- s.style.left=Math.random()*100+"%";
- s.style.top=Math.random()*100+"%";
- s.style.fontSize=(8+Math.random()*12)+"px";
- s.style.animationDelay=Math.random()*4+"s";
- starBox.appendChild(s);
+/* Pastel floating decorations */
+const decor = document.getElementById("decor");
+const decorations = ["♡","✦","✿","☁️","🌼","୨୧","☆","🩵","🎀"];
+for (let i = 0; i < 22; i++) {
+  const item = document.createElement("span");
+  item.className = "floaty";
+  item.textContent = decorations[i % decorations.length];
+  item.style.left = (Math.random() * 96) + "%";
+  item.style.top = (Math.random() * 96) + "%";
+  item.style.fontSize = (13 + Math.random() * 17) + "px";
+  item.style.animationDelay = (Math.random() * 4) + "s";
+  item.style.animationDuration = (4 + Math.random() * 4) + "s";
+  decor.appendChild(item);
 }
-function go(n){
- document.querySelectorAll(".page").forEach((p,i)=>p.classList.toggle("active",i===n));
-}
-function openLetter(){
- document.getElementById("env").classList.add("open");
- setTimeout(()=>go(1),800);
-}
-document.getElementById("env").onclick=openLetter;
-document.getElementById("env").onkeydown=e=>{
- if(e.key==="Enter"||e.key===" ")openLetter();
-};
-let blown=false;
-function blow(){
- if(blown)return;
- blown=true;
- document.getElementById("candle").textContent="🕯";
- document.getElementById("wish").innerHTML=
- "소원이 꼭 이루어지길!<br>오늘은 많이 웃는 하루가 되길 바라.";
- confetti(25);
-}
-const messages=[
- ["오빠, 생일 축하해.","오늘 하루 편안하고 행복하게 보냈으면 좋겠어."],
- ["항상 건강했으면 좋겠어.","바쁠 때도 밥 잘 챙겨 먹고, 잠도 조금 더 잘 잤으면 좋겠다."],
- ["좋은 일들이 많아지길 바라.","힘든 날보다 웃을 일이 더 많은 한 해가 됐으면 좋겠어."],
- ["그냥 좋은 마음으로 전하는 말이야.","답장 부담은 갖지 말고, 오늘은 맛있는 것도 먹으면서 편하게 보내."]
-];
-let idx=0;
-function render(){
- document.getElementById("count").textContent=
- String(idx+1).padStart(2,"0")+" / 04";
- document.getElementById("mtitle").textContent=messages[idx][0];
- document.getElementById("msg").textContent=messages[idx][1];
- document.getElementById("prev").style.visibility=idx===0?"hidden":"visible";
- document.getElementById("next").textContent=idx===3?"마지막 인사 →":"다음 →";
-}
-function change(d){
- idx+=d;
- if(idx<0)idx=0;
- if(idx>=messages.length){go(3);return}
- render();
-}
-function confetti(n){
- const box=document.getElementById("confetti");
- const symbols=["✦","✧","★","·","♡"];
- for(let i=0;i<n;i++){
-  let el=document.createElement("span");
-  el.className="fall";el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-  el.style.left=Math.random()*100+"vw";
-  el.style.animationDuration=(2+Math.random()*3)+"s";
-  el.style.fontSize=(12+Math.random()*16)+"px";
-  box.appendChild(el);setTimeout(()=>el.remove(),5000);
- }
-}
-function celebrate(){confetti(75)}
-function restart(){
- idx=0;blown=false;render();
- document.getElementById("env").classList.remove("open");
- document.getElementById("candle").textContent="🕯️";
- document.getElementById("wish").innerHTML="초를 눌러서 소원을 빌어봐.<br>좋은 일이 많이 생기길 바라.";
- go(0);
-}
-render();
 
-// Simple original melody generated by the browser.
-// Tap the music button to start/stop it.
-let ctx=null,timer=null,note=0;
-const tones=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
-function playNote(){
- if(!ctx)return;
- let o=ctx.createOscillator(),g=ctx.createGain();
- o.type="sine";o.frequency.value=tones[note++%tones.length];
- g.gain.setValueAtTime(.0001,ctx.currentTime);
- g.gain.exponentialRampToValueAtTime(.03,ctx.currentTime+.04);
- g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.5);
- o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.55);
+/* Curtain opening */
+const curtain = document.getElementById("curtain");
+document.getElementById("openBtn").addEventListener("click", () => {
+  curtain.classList.add("open");
+  setTimeout(() => curtain.classList.add("gone"), 1400);
+  celebrate(18);
+});
+
+/* Show one section at a time */
+const sections = [
+  "welcome", "game1", "game2", "game3",
+  "cakeSection", "birthdayMessage", "musicSection"
+];
+
+function showSection(id) {
+  sections.forEach(sectionId => {
+    document.getElementById(sectionId).classList.toggle("hidden", sectionId !== id);
+  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
-document.getElementById("music").onclick=async function(){
- if(timer){
-  clearInterval(timer);timer=null;await ctx.suspend();
-  this.textContent="♪ 음악 켜기";
- }else{
-  const AC=window.AudioContext||window.webkitAudioContext;
-  if(!AC){this.textContent="음악을 지원하지 않아요";return}
-  ctx=ctx||new AC();await ctx.resume();playNote();
-  timer=setInterval(playNote,620);this.textContent="♫ 음악 끄기";
- }
+
+showSection("welcome");
+
+/* Confetti */
+function celebrate(amount = 35) {
+  const colors = ["#ffb9d0", "#bcebd8", "#ffe7a0", "#bcdcff", "#e7ccff"];
+  for (let i = 0; i < amount; i++) {
+    const bit = document.createElement("span");
+    bit.className = "confetti";
+    bit.textContent = ["✦", "♡", "✿", "•", "★"][Math.floor(Math.random() * 5)];
+    bit.style.left = Math.random() * 100 + "vw";
+    bit.style.color = colors[Math.floor(Math.random() * colors.length)];
+    bit.style.fontSize = (12 + Math.random() * 18) + "px";
+    bit.style.animationDuration = (2.5 + Math.random() * 3) + "s";
+    document.body.appendChild(bit);
+    setTimeout(() => bit.remove(), 6000);
+  }
+}
+function celebrateAgain() { celebrate(60); }
+
+/* Game 1: catch five stars */
+const starField = document.getElementById("starField");
+const starStatus = document.getElementById("starStatus");
+const starFeedback = document.getElementById("starFeedback");
+const startStars = document.getElementById("startStars");
+const nextToQuiz = document.getElementById("nextToQuiz");
+
+let starsCaught = 0;
+let timeLeft = 15;
+let starTimer = null;
+let starSpawner = null;
+let starPlaying = false;
+
+function updateStarStatus() {
+  starStatus.textContent = `Stars: ${starsCaught} / 5 · Time: ${timeLeft}s`;
+}
+
+function spawnStar() {
+  if (!starPlaying || starsCaught >= 5) return;
+  const star = document.createElement("button");
+  star.className = "star-target";
+  star.type = "button";
+  star.textContent = ["⭐", "🌟", "✨"][Math.floor(Math.random() * 3)];
+  star.setAttribute("aria-label", "Catch star");
+  const maxX = Math.max(0, starField.clientWidth - 48);
+  const maxY = Math.max(0, starField.clientHeight - 48);
+  star.style.left = Math.random() * maxX + "px";
+  star.style.top = Math.random() * maxY + "px";
+  star.addEventListener("click", () => {
+    if (!starPlaying) return;
+    starsCaught++;
+    star.remove();
+    updateStarStatus();
+    if (starsCaught >= 5) {
+      finishStars(true);
+    } else {
+      starFeedback.textContent = "Nice! Keep going ✨";
+      spawnStar();
+    }
+  });
+  starField.appendChild(star);
+}
+
+function finishStars(won) {
+  starPlaying = false;
+  clearInterval(starTimer);
+  clearInterval(starSpawner);
+  if (won) {
+    starFeedback.textContent = "You caught them all! 잘했어! 🌟";
+    nextToQuiz.classList.remove("hidden");
+    celebrate(20);
+  } else {
+    starFeedback.textContent = "Almost! Try one more time ♡";
+    startStars.classList.remove("hidden");
+  }
+  starField.querySelectorAll(".star-target").forEach(s => s.remove());
+}
+
+startStars.addEventListener("click", () => {
+  clearInterval(starTimer);
+  clearInterval(starSpawner);
+  starsCaught = 0;
+  timeLeft = 15;
+  starPlaying = true;
+  starField.innerHTML = "";
+  nextToQuiz.classList.add("hidden");
+  startStars.classList.add("hidden");
+  starFeedback.textContent = "Catch the stars! ⭐";
+  updateStarStatus();
+  spawnStar();
+
+  starSpawner = setInterval(() => {
+    if (starPlaying && starField.querySelectorAll(".star-target").length < 3) {
+      spawnStar();
+    }
+  }, 900);
+
+  starTimer = setInterval(() => {
+    timeLeft--;
+    updateStarStatus();
+    if (timeLeft <= 0 && starsCaught < 5) finishStars(false);
+  }, 1000);
+});
+
+/* Game 2: mini quiz */
+const questions = [
+  {
+    question: "Which one is a birthday cake?",
+    options: ["🍰 Cake", "🧦 Socks", "🚗 Car"],
+    answer: 0,
+    success: "Correct! Cake time! 🍰"
+  },
+  {
+    question: "What should you do on your birthday?",
+    options: ["Never rest", "Eat something nice and rest", "Work all day"],
+    answer: 1,
+    success: "Exactly. Take care of yourself too! 🌷"
+  },
+  {
+    question: "What's the birthday wish in Korean?",
+    options: ["잘 자", "생일 축하해", "안녕히 가세요"],
+    answer: 1,
+    success: "맞아! 생일 축하해! 🎉"
+  }
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+const quizQuestion = document.getElementById("quizQuestion");
+const quizOptions = document.getElementById("quizOptions");
+const quizProgress = document.getElementById("quizProgress");
+const quizFeedback = document.getElementById("quizFeedback");
+const nextQuestion = document.getElementById("nextQuestion");
+const nextToGift = document.getElementById("nextToGift");
+
+function renderQuestion() {
+  const q = questions[quizIndex];
+  quizAnswered = false;
+  quizProgress.textContent = `Question ${quizIndex + 1} of ${questions.length}`;
+  quizQuestion.textContent = q.question;
+  quizFeedback.textContent = "";
+  quizOptions.innerHTML = "";
+  nextQuestion.classList.add("hidden");
+  nextToGift.classList.add("hidden");
+
+  q.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.className = "choice quiz-option";
+    button.textContent = option;
+    button.addEventListener("click", () => {
+      if (quizAnswered) return;
+      quizAnswered = true;
+      const buttons = quizOptions.querySelectorAll("button");
+      buttons.forEach(b => b.disabled = true);
+      if (index === q.answer) {
+        quizScore++;
+        quizFeedback.textContent = q.success;
+        button.style.background = "#e7f8ee";
+        button.style.borderColor = "#b7e4ce";
+      } else {
+        quizFeedback.textContent = "Not quite, but nice try! ♡";
+        button.style.background = "#fff0f5";
+        buttons[q.answer].style.background = "#e7f8ee";
+      }
+      if (quizIndex < questions.length - 1) {
+        nextQuestion.classList.remove("hidden");
+      } else {
+        quizProgress.textContent = `Finished! Score: ${quizScore} / ${questions.length}`;
+        nextToGift.classList.remove("hidden");
+        celebrate(12);
+      }
+    });
+    quizOptions.appendChild(button);
+  });
+}
+
+nextQuestion.addEventListener("click", () => {
+  quizIndex++;
+  renderQuestion();
+});
+
+renderQuestion();
+
+/* Game 3: pick a gift */
+const giftMessages = {
+  star: "⭐ A little lucky star for your new year. May good things find you!",
+  cake: "🍰 A sweet cake for a sweet birthday. Hope today feels a little lighter!",
+  bear: "🧸 A tiny friend to remind you to rest and take care of yourself!"
 };
+let chosenGift = null;
+
+document.querySelectorAll(".gift").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".gift").forEach(g => g.classList.remove("selected"));
+    button.classList.add("selected");
+    chosenGift = button.dataset.gift;
+    document.getElementById("giftMessage").textContent = giftMessages[chosenGift];
+    document.getElementById("nextToCake").disabled = false;
+  });
+});
+
+document.getElementById("nextToCake").addEventListener("click", () => {
+  showSection("cakeSection");
+  celebrate(18);
+});
+
+/* Candle */
+const cake = document.getElementById("cake");
+const cakeMessage = document.getElementById("cakeMessage");
+
+document.getElementById("blowBtn").addEventListener("click", () => {
+  cake.classList.add("cake-out");
+  cakeMessage.textContent = "Wish made! 🎉 생일 축하해!";
+  celebrate(45);
+});
+
+document.getElementById("relightBtn").addEventListener("click", () => {
+  cake.classList.remove("cake-out");
+  cakeMessage.textContent = "The candle is glowing again. Make another wish! 🕯️";
+});
+
+/* Korean voice wish: uses the device's available Korean voice */
+document.getElementById("voiceBtn").addEventListener("click", () => {
+  if (!("speechSynthesis" in window)) {
+    alert("Sorry, this browser doesn't support voice playback.");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const speech = new SpeechSynthesisUtterance("생일 축하해, 건강하자!");
+  speech.lang = "ko-KR";
+  speech.rate = 0.82;
+  speech.pitch = 1.2;
+
+  const voices = window.speechSynthesis.getVoices();
+  const koreanVoice = voices.find(v => v.lang.toLowerCase().startsWith("ko"));
+  if (koreanVoice) speech.voice = koreanVoice;
+
+  window.speechSynthesis.speak(speech);
+});
+
+/* Music: loads only after user taps the button */
+const musicURL = "https://www.youtube-nocookie.com/embed/9XttLI0oH0I?autoplay=1&rel=0";
+document.getElementById("musicBtn").addEventListener("click", () => {
+  const container = document.getElementById("musicContainer");
+  if (container.querySelector("iframe")) {
+    container.querySelector("iframe").src = musicURL;
+    return;
+  }
+  const iframe = document.createElement("iframe");
+  iframe.id = "musicFrame";
+  iframe.title = "RESCENE LOVE ATTACK music video";
+  iframe.src = musicURL;
+  iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+  iframe.allowFullscreen = true;
+  container.appendChild(iframe);
+});
+
+document.getElementById("youtubeBtn").addEventListener("click", () => {
+  window.open("https://www.youtube.com/watch?v=9XttLI0oH0I", "_blank", "noopener");
+});
+
+/* Restart the whole experience */
+function restartAll() {
+  clearInterval(starTimer);
+  clearInterval(starSpawner);
+  starPlaying = false;
+  starsCaught = 0;
+  timeLeft = 15;
+  updateStarStatus();
+  starField.innerHTML = "";
+  starFeedback.textContent = "Ready, birthday boy? ♡";
+  startStars.classList.remove("hidden");
+  nextToQuiz.classList.add("hidden");
+
+  quizIndex = 0;
+  quizScore = 0;
+  renderQuestion();
+
+  chosenGift = null;
+  document.querySelectorAll(".gift").forEach(g => g.classList.remove("selected"));
+  document.getElementById("giftMessage").textContent = "Your present is waiting ♡";
+  document.getElementById("nextToCake").disabled = true;
+
+  cake.classList.remove("cake-out");
+  cakeMessage.textContent = "Make a wish, then blow! ♡";
+
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  document.getElementById("musicContainer").innerHTML = "";
+
+  curtain.classList.remove("gone", "open");
+  showSection("welcome");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#dff7ee">
+<title>Happy Birthday, Chan! ♡</title>
+
+<style>
+:root {
+  --mint: #d8f5e8;
+  --mint-dark: #8fcdb4;
+  --pink: #ffdce8;
+  --pink-dark: #ef9fbd;
+  --blue: #dcecff;
+  --blue-dark: #8eb9ec;
+  --yellow: #fff0b7;
+  --yellow-dark: #e8c86b;
+  --cream: #fffdf7;
+  --ink: #5d6277;
+  --muted: #898da0;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 15%, #fff0b9 0 5%, transparent 5.5%),
+    radial-gradient(circle at 90% 22%, #ffdce8 0 6%, transparent 6.5%),
+    radial-gradient(circle at 10% 78%, #d8f5e8 0 7%, transparent 7.5%),
+    linear-gradient(145deg, #fff9f1, #edf9ff 48%, #fff0f5);
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+  outline: 3px solid #91b9ec;
+  outline-offset: 4px;
+}
+
+button:disabled { opacity: .55; cursor: default; }
+
+.hidden { display: none !important; }
+
+#decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floaty {
+  position: absolute;
+  opacity: .65;
+  animation: float 5s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-15px) rotate(7deg); }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  margin: auto;
+  padding: 24px 17px 50px;
+}
+
+.top-note {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #8a9aab;
+  margin: 5px 0 20px;
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,.86);
+  border: 2px solid rgba(255,255,255,.96);
+  border-radius: 28px;
+  padding: 27px 20px;
+  margin: 18px 0;
+  box-shadow: 0 12px 35px rgba(130,157,179,.13);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 5px;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(90deg, var(--mint-dark), var(--yellow-dark),
+    var(--pink-dark), var(--blue-dark));
+}
+
+h1, h2, h3, p { position: relative; }
+
+h1 {
+  font-size: clamp(34px, 8vw, 56px);
+  line-height: 1.1;
+  color: #e58bab;
+  margin: 10px 0;
+  text-shadow: 2px 3px 0 #fff0b7;
+}
+
+h2 { color: #7fb8a4; margin: 7px 0 14px; }
+h3 { color: #8baed8; }
+
+p { line-height: 1.8; }
+
+.kicker {
+  display: inline-block;
+  border-radius: 30px;
+  background: var(--yellow);
+  padding: 8px 14px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #947c42;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.primary, .secondary, .choice {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 20px;
+  margin: 6px;
+  min-height: 44px;
+  transition: transform .18s, box-shadow .18s;
+}
+
+.primary {
+  background: linear-gradient(120deg, #b8ead7, #d5efff);
+  box-shadow: 0 5px 0 #a3d3c9;
+  color: #4c7774;
+  font-weight: bold;
+}
+
+.secondary {
+  background: #fff0b7;
+  box-shadow: 0 4px 0 #ead28c;
+  color: #88743e;
+}
+
+.choice {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  background: #f5f8ff;
+  border: 2px solid #e0e9fa;
+  color: #68748b;
+}
+
+.primary:hover, .secondary:hover, .choice:hover {
+  transform: translateY(-2px);
+}
+
+.primary:active, .secondary:active { transform: translateY(2px); }
+
+.sticker-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 29px;
+  margin: 17px 0;
+}
+
+.sticker-row span:nth-child(2) { animation-delay: .8s; }
+.sticker-row span:nth-child(3) { animation-delay: 1.4s; }
+
+.game-status {
+  background: #effaf4;
+  padding: 10px;
+  border-radius: 14px;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+#starField {
+  position: relative;
+  height: 250px;
+  border-radius: 22px;
+  background: linear-gradient(150deg, #e7f6ff, #fff0f6);
+  overflow: hidden;
+  border: 2px dashed #cbdff1;
+  touch-action: manipulation;
+}
+
+.star-target {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  font-size: 29px;
+  padding: 5px;
+  animation: pop .25s ease-out;
+}
+
+@keyframes pop {
+  from { transform: scale(.2); }
+  to { transform: scale(1); }
+}
+
+.quiz-option { text-align: left; }
+
+.feedback {
+  min-height: 25px;
+  font-size: 14px;
+  color: #80a99b;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.gift {
+  background: #fff8dc;
+  border: 2px solid #f4e7b8;
+  border-radius: 18px;
+  padding: 15px 5px;
+  font-size: 37px;
+  min-width: 0;
+}
+
+.gift small {
+  display: block;
+  font-size: 11px;
+  margin-top: 8px;
+  color: #99865a;
+}
+
+.gift.selected {
+  border-color: #eaa3bd;
+  background: #fff0f6;
+  transform: translateY(-4px);
+}
+
+/* Pastel realistic layered cake */
+.cake-stage {
+  height: 330px;
+  max-width: 440px;
+  margin: 5px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  padding-bottom: 25px;
+  perspective: 800px;
+}
+
+.cake-shadow {
+  position: absolute;
+  bottom: 19px;
+  width: 86%;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(105,128,145,.15);
+  filter: blur(8px);
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: 17px;
+  width: 95%;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(#fff, #e6eaf2 70%, #d4dce8);
+  border: 2px solid #fff;
+  box-shadow: 0 7px 0 #cbd6e2, inset 0 2px 4px white;
+}
+
+.cake {
+  width: 78%;
+  max-width: 320px;
+  height: 215px;
+  position: relative;
+  margin-bottom: 34px;
+  filter: drop-shadow(0 8px 5px rgba(102,113,126,.12));
+  animation: cakeEnter .8s ease-out;
+}
+
+@keyframes cakeEnter {
+  from { opacity: 0; transform: translateY(30px) scale(.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cake-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 125px;
+  border-radius: 12px 12px 22px 22px;
+  background:
+    linear-gradient(90deg, rgba(210,137,120,.18), transparent 18% 80%, rgba(190,114,102,.14)),
+    repeating-linear-gradient(0deg, transparent 0 32px, rgba(255,255,255,.32) 33px 36px),
+    linear-gradient(#f7cbbd, #f3bba9 65%, #e9a894);
+  box-shadow: inset 0 5px 8px rgba(255,255,255,.7),
+    inset 0 -8px 10px rgba(183,105,90,.12);
+}
+
+.cake-bottom::before {
+  content: "";
+  position: absolute;
+  top: 33px;
+  width: 100%;
+  height: 12px;
+  background: #fff0d9;
+  box-shadow: 0 2px 3px rgba(165,110,90,.1);
+}
+
+.cake-top {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff9ee, #f6d9cb);
+  border: 2px solid #ffece0;
+  box-shadow: inset 0 4px 5px white, 0 4px 4px rgba(181,124,107,.12);
+  z-index: 2;
+}
+
+.frosting {
+  position: absolute;
+  z-index: 3;
+  top: 70px;
+  left: -1%;
+  width: 102%;
+  height: 48px;
+  border-radius: 12px 12px 22px 22px;
+  background: linear-gradient(180deg, #fffefa, #fff0f0);
+  box-shadow: inset 0 5px 5px white, 0 4px 4px rgba(178,124,119,.12);
+}
+
+.frosting::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, white, #fff3f0);
+}
+
+.drip {
+  position: absolute;
+  z-index: 4;
+  top: 97px;
+  width: 18px;
+  height: 24px;
+  background: #fff2ef;
+  border-radius: 0 0 12px 12px;
+}
+.drip.one { left: 12%; height: 32px; }
+.drip.two { left: 38%; height: 20px; }
+.drip.three { right: 22%; height: 28px; }
+.drip.four { right: 7%; height: 18px; }
+
+.berry {
+  position: absolute;
+  top: 49px;
+  z-index: 5;
+  width: 25px;
+  height: 31px;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(110deg, #ff9aaa, #e95170 60%, #bd3457);
+  box-shadow: inset 4px 0 4px rgba(255,255,255,.35),
+    inset -3px 0 4px rgba(120,25,48,.12);
+  transform: rotate(-8deg);
+}
+
+.berry::before {
+  content: "✦";
+  position: absolute;
+  top: -10px;
+  left: 4px;
+  color: #77b98c;
+  font-size: 14px;
+}
+
+.berry::after {
+  content: "· ·";
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  color: #ffe7a8;
+  font-size: 14px;
+  line-height: 12px;
+}
+
+.berry.b1 { left: 15%; transform: rotate(-16deg) scale(.9); }
+.berry.b2 { left: 43%; top: 42px; }
+.berry.b3 { right: 15%; transform: rotate(12deg) scale(.95); }
+
+.cream-dot {
+  position: absolute;
+  top: 53px;
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 35% 25%, white, #ffe9e9 70%, #eec9d3);
+  border-radius: 50%;
+  box-shadow: 0 2px 3px rgba(170,120,120,.12);
+}
+.cream-dot.d1 { left: 29%; }
+.cream-dot.d2 { right: 29%; }
+
+.candle {
+  position: absolute;
+  z-index: 6;
+  top: 7px;
+  left: calc(50% - 5px);
+  height: 49px;
+  width: 10px;
+  border-radius: 5px;
+  background: repeating-linear-gradient(135deg, #8ed5be 0 5px, #fff 5px 10px);
+  box-shadow: inset 2px 0 2px rgba(255,255,255,.8);
+}
+
+.flame {
+  position: absolute;
+  top: -23px;
+  left: -5px;
+  width: 20px;
+  height: 27px;
+  border-radius: 60% 40% 60% 40%;
+  transform: rotate(2deg);
+  background: radial-gradient(ellipse at 50% 70%, #fff9c6 0 25%, #ffcb66 45%, #ff9d79 72%);
+  filter: drop-shadow(0 0 8px #ffd67a);
+  animation: flicker .65s infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes flicker {
+  from { transform: rotate(-5deg) scale(.96); }
+  to { transform: rotate(6deg) scale(1.05); }
+}
+
+.cake-out .flame { display: none; }
+
+.cake-controls { margin-top: 0; }
+
+.birthday-note {
+  background: linear-gradient(135deg, #fff5f8, #f0fbf6 55%, #f0f6ff);
+  border: 1px solid #fff;
+  border-radius: 22px;
+  padding: 23px 18px;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 2;
+  font-size: 15px;
+}
+
+.korean-big {
+  text-align: center;
+  color: #df8eac;
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+#musicFrame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  border-radius: 17px;
+  margin-top: 12px;
+  background: #e8f4ef;
+}
+
+footer {
+  text-align: center;
+  color: #9da4b4;
+  font-size: 12px;
+  padding: 15px;
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 20;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(700deg); opacity: .1; }
+}
+
+/* Opening curtains */
+#curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  pointer-events: none;
+  transition: visibility .9s;
+}
+#curtain.gone { visibility: hidden; }
+
+.curtain-panel {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(255,255,255,.25), transparent 45%),
+    repeating-linear-gradient(90deg, #f6a8c0 0 12px, #ed91b1 12px 24px, #f7b9cc 24px 36px);
+  box-shadow: inset 0 0 35px rgba(150,76,105,.16);
+  transition: transform 1.35s cubic-bezier(.72,0,.2,1);
+}
+.curtain-panel.left { border-right: 3px solid #ffe3a4; }
+.curtain-panel.right { border-left: 3px solid #ffe3a4; }
+
+.curtain-panel::after {
+  content: "✦  ♡  ✦  ♡  ✦  ♡  ✦";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+  text-align: center;
+  color: rgba(255,255,255,.7);
+  font-size: 18px;
+  line-height: 3;
+  overflow: hidden;
+}
+
+#curtain.open .left { transform: translateX(-105%); }
+#curtain.open .right { transform: translateX(105%); }
+
+.curtain-label {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(22px, 5vw, 35px);
+  color: #fffdf8;
+  text-shadow: 0 3px 8px rgba(140,80,100,.15);
+  padding: 15px;
+  z-index: 101;
+  transition: opacity .4s;
+}
+#curtain.open .curtain-label { opacity: 0; }
+
+@media (max-width: 420px) {
+  main { padding: 16px 12px 35px; }
+  .panel { padding: 25px 15px; }
+  .cake-stage { height: 290px; }
+  .cake { transform: scale(.91); transform-origin: bottom center; }
+}
+</style>
+</head>
+
+<body>
+<div id="decor" aria-hidden="true"></div>
+
+<div id="curtain">
+  <div class="curtain-panel left"></div>
+  <div class="curtain-panel right"></div>
+  <div class="curtain-label" id="curtainLabel">
+    <div>🎀 A little birthday surprise 🎀</div>
+    <p style="font-size:15px">made just for you ♡</p>
+    <button class="primary" id="openBtn" style="pointer-events:auto">
+      Open your gift ✨
+    </button>
+  </div>
+</div>
+
+<main>
+  <div class="top-note">A LITTLE WEBSITE MADE WITH CARE ♡</div>
+
+  <section class="panel" id="welcome">
+    <div class="sticker-row"><span>🌷</span><span>🎂</span><span>🧸</span></div>
+    <span class="kicker">SPECIAL DAY · OCTOBER 23</span>
+    <h1>Happy Birthday,<br>Chan! ♡</h1>
+    <p class="subtitle">오늘은 오빠의 특별한 날이야 ✨</p>
+    <p>A tiny birthday world, made just for you.</p>
+    <button class="primary" onclick="showSection('game1')">
+      Let's play! 🎮
+    </button>
+    <div class="sticker-row"><span>☁️</span><span>⭐</span><span>🍰</span></div>
+  </section>
+
+  <section class="panel" id="game1">
+    <span class="kicker">LEVEL 01 · STAR CATCHER</span>
+    <h2>Catch the little stars! ⭐</h2>
+    <p>Tap 5 stars before the time runs out.</p>
+    <div class="game-status" id="starStatus">Stars: 0 / 5 · Time: 15s</div>
+    <div id="starField" aria-label="Tap the stars here"></div>
+    <p class="feedback" id="starFeedback">Ready, birthday boy? ♡</p>
+    <button class="primary" id="startStars">Start game ✨</button>
+    <button class="secondary hidden" id="nextToQuiz" onclick="showSection('game2')">
+      Next level →
+    </button>
+  </section>
+
+  <section class="panel" id="game2">
+    <span class="kicker">LEVEL 02 · QUICK QUIZ</span>
+    <h2>Birthday mini quiz 🧸</h2>
+    <p>Three little questions. Choose your answer!</p>
+    <div class="game-status" id="quizProgress">Question 1 of 3</div>
+    <h3 id="quizQuestion">Which one is a birthday cake?</h3>
+    <div id="quizOptions"></div>
+    <p class="feedback" id="quizFeedback"></p>
+    <button class="primary hidden" id="nextQuestion">Next question →</button>
+    <button class="secondary hidden" id="nextToGift" onclick="showSection('game3')">
+      Choose your gift 🎁
+    </button>
+  </section>
+
+  <section class="panel" id="game3">
+    <span class="kicker">LEVEL 03 · PICK A PRESENT</span>
+    <h2>Choose one gift! 🎁</h2>
+    <p>No wrong choices. Pick whichever you like.</p>
+    <div class="gift-grid">
+      <button class="gift" data-gift="star" aria-label="Star gift">⭐<small>Lucky star</small></button>
+      <button class="gift" data-gift="cake" aria-label="Cake gift">🍰<small>Sweet cake</small></button>
+      <button class="gift" data-gift="bear" aria-label="Bear gift">🧸<small>Little friend</small></button>
+    </div>
+    <p class="feedback" id="giftMessage">Your present is waiting ♡</p>
+    <button class="primary" id="nextToCake" disabled>
+      Time for cake! 🎂
+    </button>
+  </section>
+
+  <section class="panel" id="cakeSection">
+    <span class="kicker">THE BIRTHDAY CAKE</span>
+    <h2>Make a little wish ✨</h2>
+    <p>One candle, one wish. Take your time.</p>
+
+    <div class="cake-stage">
+      <div class="cake-shadow"></div>
+      <div class="cake-plate"></div>
+      <div class="cake" id="cake">
+        <div class="cake-bottom"></div>
+        <div class="cake-top"></div>
+        <div class="frosting"></div>
+        <div class="drip one"></div>
+        <div class="drip two"></div>
+        <div class="drip three"></div>
+        <div class="drip four"></div>
+        <div class="berry b1"></div>
+        <div class="berry b2"></div>
+        <div class="berry b3"></div>
+        <div class="cream-dot d1"></div>
+        <div class="cream-dot d2"></div>
+        <div class="candle"><div class="flame" id="flame"></div></div>
+      </div>
+    </div>
+
+    <div class="cake-controls">
+      <button class="primary" id="blowBtn">Blow the candle! 💨</button>
+      <button class="secondary" id="relightBtn">Light it again 🕯️</button>
+    </div>
+    <p class="feedback" id="cakeMessage">Make a wish, then blow! ♡</p>
+    <button class="primary" onclick="showSection('birthdayMessage')">
+      Read your birthday letter 💌
+    </button>
+  </section>
+
+  <section class="panel" id="birthdayMessage">
+    <span class="kicker">A LITTLE BIRTHDAY LETTER</span>
+    <div class="sticker-row"><span>💌</span><span>🌼</span><span>☁️</span></div>
+    <h2>생일 축하해, 찬 오빠 ♡</h2>
+
+    <div class="birthday-note">오빠, 생일 축하해! 🎂
+
+오늘 하루는 맛있는 것도 많이 먹고, 마음 편하게 웃을 수 있는 하루였으면 좋겠어.
+
+요즘 힘든 일이 있더라도 너무 무리하지 말고, 건강 잘 챙겼으면 좋겠어. 잠도 조금 더 잘 자고, 아픈 곳 없이 지냈으면 좋겠다.
+
+올해는 오빠한테 좋은 일들이 많이 생기고, 마음도 지금보다 조금 더 편안해지길 바랄게.
+
+항상 건강하고, 행복하자.
+생일 정말 축하해! 🌷
+
+— 생일을 축하하는 마음을 담아서 ♡</div>
+
+    <p class="korean-big">생일 축하해, 건강하자! 🩵</p>
+    <button class="primary" id="voiceBtn">🔊 들어봐!</button>
+    <p class="subtitle">Tap to hear a little birthday wish in Korean.</p>
+    <button class="secondary" onclick="showSection('musicSection')">
+      One last little surprise 🎵
+    </button>
+  </section>
+
+  <section class="panel" id="musicSection">
+    <span class="kicker">ONE LAST SURPRISE</span>
+    <h2>A little song for today 🎵</h2>
+    <p>Enjoy your birthday, at your own pace ♡</p>
+    <div class="sticker-row"><span>🎧</span><span>💿</span><span>🌈</span></div>
+    <p><strong>RESCENE — LOVE ATTACK</strong></p>
+    <p class="subtitle">Tap below to load the music video.</p>
+    <button class="primary" id="musicBtn">Play LOVE ATTACK ▶</button>
+    <div id="musicContainer"></div>
+    <p class="subtitle">If the video doesn't load here, you can open it on YouTube.</p>
+    <button class="secondary" id="youtubeBtn">Open on YouTube ↗</button>
+    <p class="korean-big">오늘도 좋은 하루 보내! 🌼</p>
+    <button class="primary" onclick="celebrateAgain()">A little more confetti! 🎉</button>
+    <button class="secondary" onclick="restartAll()">Start again ↺</button>
+  </section>
+
+  <footer>Made with care · 생일 축하해 ♡</footer>
+</main>
+
+<script>
+/* Pastel floating decorations */
+const decor = document.getElementById("decor");
+const decorations = ["♡","✦","✿","☁️","🌼","୨୧","☆","🩵","🎀"];
+for (let i = 0; i < 22; i++) {
+  const item = document.createElement("span");
+  item.className = "floaty";
+  item.textContent = decorations[i % decorations.length];
+  item.style.left = (Math.random() * 96) + "%";
+  item.style.top = (Math.random() * 96) + "%";
+  item.style.fontSize = (13 + Math.random() * 17) + "px";
+  item.style.animationDelay = (Math.random() * 4) + "s";
+  item.style.animationDuration = (4 + Math.random() * 4) + "s";
+  decor.appendChild(item);
+}
+
+/* Curtain opening */
+const curtain = document.getElementById("curtain");
+document.getElementById("openBtn").addEventListener("click", () => {
+  curtain.classList.add("open");
+  setTimeout(() => curtain.classList.add("gone"), 1400);
+  celebrate(18);
+});
+
+/* Show one section at a time */
+const sections = [
+  "welcome", "game1", "game2", "game3",
+  "cakeSection", "birthdayMessage", "musicSection"
+];
+
+function showSection(id) {
+  sections.forEach(sectionId => {
+    document.getElementById(sectionId).classList.toggle("hidden", sectionId !== id);
+  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+showSection("welcome");
+
+/* Confetti */
+function celebrate(amount = 35) {
+  const colors = ["#ffb9d0", "#bcebd8", "#ffe7a0", "#bcdcff", "#e7ccff"];
+  for (let i = 0; i < amount; i++) {
+    const bit = document.createElement("span");
+    bit.className = "confetti";
+    bit.textContent = ["✦", "♡", "✿", "•", "★"][Math.floor(Math.random() * 5)];
+    bit.style.left = Math.random() * 100 + "vw";
+    bit.style.color = colors[Math.floor(Math.random() * colors.length)];
+    bit.style.fontSize = (12 + Math.random() * 18) + "px";
+    bit.style.animationDuration = (2.5 + Math.random() * 3) + "s";
+    document.body.appendChild(bit);
+    setTimeout(() => bit.remove(), 6000);
+  }
+}
+function celebrateAgain() { celebrate(60); }
+
+/* Game 1: catch five stars */
+const starField = document.getElementById("starField");
+const starStatus = document.getElementById("starStatus");
+const starFeedback = document.getElementById("starFeedback");
+const startStars = document.getElementById("startStars");
+const nextToQuiz = document.getElementById("nextToQuiz");
+
+let starsCaught = 0;
+let timeLeft = 15;
+let starTimer = null;
+let starSpawner = null;
+let starPlaying = false;
+
+function updateStarStatus() {
+  starStatus.textContent = `Stars: ${starsCaught} / 5 · Time: ${timeLeft}s`;
+}
+
+function spawnStar() {
+  if (!starPlaying || starsCaught >= 5) return;
+  const star = document.createElement("button");
+  star.className = "star-target";
+  star.type = "button";
+  star.textContent = ["⭐", "🌟", "✨"][Math.floor(Math.random() * 3)];
+  star.setAttribute("aria-label", "Catch star");
+  const maxX = Math.max(0, starField.clientWidth - 48);
+  const maxY = Math.max(0, starField.clientHeight - 48);
+  star.style.left = Math.random() * maxX + "px";
+  star.style.top = Math.random() * maxY + "px";
+  star.addEventListener("click", () => {
+    if (!starPlaying) return;
+    starsCaught++;
+    star.remove();
+    updateStarStatus();
+    if (starsCaught >= 5) {
+      finishStars(true);
+    } else {
+      starFeedback.textContent = "Nice! Keep going ✨";
+      spawnStar();
+    }
+  });
+  starField.appendChild(star);
+}
+
+function finishStars(won) {
+  starPlaying = false;
+  clearInterval(starTimer);
+  clearInterval(starSpawner);
+  if (won) {
+    starFeedback.textContent = "You caught them all! 잘했어! 🌟";
+    nextToQuiz.classList.remove("hidden");
+    celebrate(20);
+  } else {
+    starFeedback.textContent = "Almost! Try one more time ♡";
+    startStars.classList.remove("hidden");
+  }
+  starField.querySelectorAll(".star-target").forEach(s => s.remove());
+}
+
+startStars.addEventListener("click", () => {
+  clearInterval(starTimer);
+  clearInterval(starSpawner);
+  starsCaught = 0;
+  timeLeft = 15;
+  starPlaying = true;
+  starField.innerHTML = "";
+  nextToQuiz.classList.add("hidden");
+  startStars.classList.add("hidden");
+  starFeedback.textContent = "Catch the stars! ⭐";
+  updateStarStatus();
+  spawnStar();
+
+  starSpawner = setInterval(() => {
+    if (starPlaying && starField.querySelectorAll(".star-target").length < 3) {
+      spawnStar();
+    }
+  }, 900);
+
+  starTimer = setInterval(() => {
+    timeLeft--;
+    updateStarStatus();
+    if (timeLeft <= 0 && starsCaught < 5) finishStars(false);
+  }, 1000);
+});
+
+/* Game 2: mini quiz */
+const questions = [
+  {
+    question: "Which one is a birthday cake?",
+    options: ["🍰 Cake", "🧦 Socks", "🚗 Car"],
+    answer: 0,
+    success: "Correct! Cake time! 🍰"
+  },
+  {
+    question: "What should you do on your birthday?",
+    options: ["Never rest", "Eat something nice and rest", "Work all day"],
+    answer: 1,
+    success: "Exactly. Take care of yourself too! 🌷"
+  },
+  {
+    question: "What's the birthday wish in Korean?",
+    options: ["잘 자", "생일 축하해", "안녕히 가세요"],
+    answer: 1,
+    success: "맞아! 생일 축하해! 🎉"
+  }
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+const quizQuestion = document.getElementById("quizQuestion");
+const quizOptions = document.getElementById("quizOptions");
+const quizProgress = document.getElementById("quizProgress");
+const quizFeedback = document.getElementById("quizFeedback");
+const nextQuestion = document.getElementById("nextQuestion");
+const nextToGift = document.getElementById("nextToGift");
+
+function renderQuestion() {
+  const q = questions[quizIndex];
+  quizAnswered = false;
+  quizProgress.textContent = `Question ${quizIndex + 1} of ${questions.length}`;
+  quizQuestion.textContent = q.question;
+  quizFeedback.textContent = "";
+  quizOptions.innerHTML = "";
+  nextQuestion.classList.add("hidden");
+  nextToGift.classList.add("hidden");
+
+  q.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.className = "choice quiz-option";
+    button.textContent = option;
+    button.addEventListener("click", () => {
+      if (quizAnswered) return;
+      quizAnswered = true;
+      const buttons = quizOptions.querySelectorAll("button");
+      buttons.forEach(b => b.disabled = true);
+      if (index === q.answer) {
+        quizScore++;
+        quizFeedback.textContent = q.success;
+        button.style.background = "#e7f8ee";
+        button.style.borderColor = "#b7e4ce";
+      } else {
+        quizFeedback.textContent = "Not quite, but nice try! ♡";
+        button.style.background = "#fff0f5";
+        buttons[q.answer].style.background = "#e7f8ee";
+      }
+      if (quizIndex < questions.length - 1) {
+        nextQuestion.classList.remove("hidden");
+      } else {
+        quizProgress.textContent = `Finished! Score: ${quizScore} / ${questions.length}`;
+        nextToGift.classList.remove("hidden");
+        celebrate(12);
+      }
+    });
+    quizOptions.appendChild(button);
+  });
+}
+
+nextQuestion.addEventListener("click", () => {
+  quizIndex++;
+  renderQuestion();
+});
+
+renderQuestion();
+
+/* Game 3: pick a gift */
+const giftMessages = {
+  star: "⭐ A little lucky star for your new year. May good things find you!",
+  cake: "🍰 A sweet cake for a sweet birthday. Hope today feels a little lighter!",
+  bear: "🧸 A tiny friend to remind you to rest and take care of yourself!"
+};
+let chosenGift = null;
+
+document.querySelectorAll(".gift").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".gift").forEach(g => g.classList.remove("selected"));
+    button.classList.add("selected");
+    chosenGift = button.dataset.gift;
+    document.getElementById("giftMessage").textContent = giftMessages[chosenGift];
+    document.getElementById("nextToCake").disabled = false;
+  });
+});
+
+document.getElementById("nextToCake").addEventListener("click", () => {
+  showSection("cakeSection");
+  celebrate(18);
+});
+
+/* Candle */
+const cake = document.getElementById("cake");
+const cakeMessage = document.getElementById("cakeMessage");
+
+document.getElementById("blowBtn").addEventListener("click", () => {
+  cake.classList.add("cake-out");
+  cakeMessage.textContent = "Wish made! 🎉 생일 축하해!";
+  celebrate(45);
+});
+
+document.getElementById("relightBtn").addEventListener("click", () => {
+  cake.classList.remove("cake-out");
+  cakeMessage.textContent = "The candle is glowing again. Make another wish! 🕯️";
+});
+
+/* Korean voice wish: uses the device's available Korean voice */
+document.getElementById("voiceBtn").addEventListener("click", () => {
+  if (!("speechSynthesis" in window)) {
+    alert("Sorry, this browser doesn't support voice playback.");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const speech = new SpeechSynthesisUtterance("생일 축하해, 건강하자!");
+  speech.lang = "ko-KR";
+  speech.rate = 0.82;
+  speech.pitch = 1.2;
+
+  const voices = window.speechSynthesis.getVoices();
+  const koreanVoice = voices.find(v => v.lang.toLowerCase().startsWith("ko"));
+  if (koreanVoice) speech.voice = koreanVoice;
+
+  window.speechSynthesis.speak(speech);
+});
+
+/* Music: loads only after user taps the button */
+const musicURL = "https://www.youtube-nocookie.com/embed/9XttLI0oH0I?autoplay=1&rel=0";
+document.getElementById("musicBtn").addEventListener("click", () => {
+  const container = document.getElementById("musicContainer");
+  if (container.querySelector("iframe")) {
+    container.querySelector("iframe").src = musicURL;
+    return;
+  }
+  const iframe = document.createElement("iframe");
+  iframe.id = "musicFrame";
+  iframe.title = "RESCENE LOVE ATTACK music video";
+  iframe.src = musicURL;
+  iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+  iframe.allowFullscreen = true;
+  container.appendChild(iframe);
+});
+
+document.getElementById("youtubeBtn").addEventListener("click", () => {
+  window.open("https://www.youtube.com/watch?v=9XttLI0oH0I", "_blank", "noopener");
+});
+
+/* Restart the whole experience */
+function restartAll() {
+  clearInterval(starTimer);
+  clearInterval(starSpawner);
+  starPlaying = false;
+  starsCaught = 0;
+  timeLeft = 15;
+  updateStarStatus();
+  starField.innerHTML = "";
+  starFeedback.textContent = "Ready, birthday boy? ♡";
+  startStars.classList.remove("hidden");
+  nextToQuiz.classList.add("hidden");
+
+  quizIndex = 0;
+  quizScore = 0;
+  renderQuestion();
+
+  chosenGift = null;
+  document.querySelectorAll(".gift").forEach(g => g.classList.remove("selected"));
+  document.getElementById("giftMessage").textContent = "Your present is waiting ♡";
+  document.getElementById("nextToCake").disabled = true;
+
+  cake.classList.remove("cake-out");
+  cakeMessage.textContent = "Make a wish, then blow! ♡";
+
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  document.getElementById("musicContainer").innerHTML = "";
+
+  curtain.classList.remove("gone", "open");
+  showSection("welcome");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 </script>
 </body>
 </html>
