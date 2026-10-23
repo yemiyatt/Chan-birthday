@@ -4,753 +4,348 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>정찬 오빠의 생일 🎂</title>
+<title>찬이 오빠 생일 축하해 🎂</title>
 <style>
-:root{
-  --mint:#d9f5e7;
-  --yellow:#fff0b5;
-  --pink:#ffd9e8;
-  --blue:#dceaff;
-  --purple:#e9ddff;
-  --ink:#554d62;
-}
+:root{--pink:#f4b5ce;--rose:#dc83aa;--cream:#fffaf2;--ink:#79566d;--lilac:#e9e0ff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--ink);
-  font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  background:linear-gradient(140deg,var(--mint),var(--yellow),var(--pink),var(--blue));
-  background-size:350% 350%;
-  animation:pastel 18s ease infinite;
-  transition:background .8s;
-}
-@keyframes pastel{
-  0%,100%{background-position:0 50%}
-  50%{background-position:100% 50%}
-}
-button{
-  border:0;border-radius:22px;padding:13px 18px;
-  font:inherit;color:var(--ink);background:white;
-  box-shadow:0 5px 15px #63557618;
-  cursor:pointer;transition:transform .18s,filter .18s;
-}
-button:hover{transform:translateY(-2px);filter:brightness(1.02)}
+body{margin:0;color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:linear-gradient(#fff5fa,#fffaf2,#f5f0ff)}
+button{border:0;border-radius:24px;padding:12px 18px;background:var(--rose);color:white;font-weight:bold;font-size:15px;cursor:pointer;box-shadow:0 5px 12px #d99ab633;margin:4px}
 button:active{transform:scale(.97)}
-button:focus-visible{outline:3px solid #9783c8}
-button:disabled{opacity:.5;cursor:default}
-h1,h2,h3,p{line-height:1.75}
-h1{font-size:clamp(30px,7vw,47px);margin:12px 0}
-h2{font-size:clamp(23px,5vw,31px)}
-p{white-space:pre-line}
-main{width:min(760px,92%);margin:auto;padding:20px 0 70px}
-.center{text-align:center}
-.card{
-  padding:clamp(20px,5vw,34px);margin:22px 0;
-  border-radius:30px;background:#ffffffdb;
-  border:2px solid #ffffffd9;
-  box-shadow:0 14px 40px #695c7819;
-  backdrop-filter:blur(10px);
-}
-.pill{
-  display:inline-block;padding:7px 13px;border-radius:30px;
-  background:#fff9;font-size:13px;
-}
-.small{font-size:13px;opacity:.78}
-.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:15px 0}
-.pink{background:#ffd3e5}
-.mint{background:#c9f0dc}
-.yellow{background:#ffe9a0}
-.blue{background:#d7e7ff}
-.purple{background:#e8dcff}
-hr{border:0;border-top:2px dashed #e6d9e9;margin:27px 0}
-.section{scroll-margin-top:16px}
-.floaty{position:fixed;pointer-events:none;z-index:0;animation:float 5s ease-in-out infinite}
-.f1{top:7%;left:3%;font-size:27px}
-.f2{top:24%;right:4%;font-size:30px;animation-delay:1s}
-.f3{bottom:12%;left:4%;font-size:25px;animation-delay:2s}
-.f4{bottom:30%;right:4%;font-size:25px;animation-delay:.5s}
-@keyframes float{50%{transform:translateY(-13px) rotate(8deg)}}
-main{position:relative;z-index:1}
-
-/* 커튼 */
-#curtain{
-  position:fixed;inset:0;z-index:50;display:flex;overflow:hidden;
-  background:#ffdce9;
-}
-.panel{
-  width:50%;height:100%;
-  background:repeating-linear-gradient(90deg,#f4aaca 0 17px,#ffc7dc 17px 36px,#ffe1ed 36px 43px);
-  transition:transform 1.5s cubic-bezier(.7,0,.2,1);
-}
-.panel.left{border-right:3px solid #fff8}
-.panel.right{border-left:3px solid #fff8}
-#curtain.open .left{transform:translateX(-102%)}
-#curtain.open .right{transform:translateX(102%)}
-.curtain-label{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  justify-content:center;align-items:center;text-align:center;padding:24px;
-  transition:opacity .5s;
-}
-#curtain.open .curtain-label{opacity:0;pointer-events:none}
-.curtain-label h1{color:#a34e79}
-.hidden{display:none!important}
-
-/* 게임 */
-#starArea{
-  height:220px;border-radius:23px;position:relative;overflow:hidden;
-  background:linear-gradient(140deg,#d9f7e9,#fff0c0);
-  margin-top:15px;
-}
-.star{
-  position:absolute;font-size:34px;padding:0;background:transparent;
-  box-shadow:none;touch-action:manipulation;
-}
-.result{font-weight:bold;min-height:30px;text-align:center}
-.quiz-option{display:block;width:100%;margin:8px 0;background:#fff}
-.choice{font-size:32px;min-width:82px;min-height:78px;background:#fff9}
-
-/* 케이크 */
-.cake-scene{width:280px;max-width:100%;height:250px;position:relative;margin:10px auto}
-.plate{
-  position:absolute;bottom:15px;left:5%;width:90%;height:22px;
-  background:linear-gradient(#fff,#d5d1e9);border-radius:50%;
-  box-shadow:0 7px 0 #d4c9e5;
-}
-.bottom-cake{
-  position:absolute;bottom:37px;left:12%;width:76%;height:77px;
-  border-radius:15px 15px 22px 22px;
-  background:linear-gradient(90deg,#e9a3bd,#ffe0e9 35%,#ffc8d8 72%,#e79ab7);
-  box-shadow:inset 0 -12px 0 #e7a0bb;
-}
-.bottom-cake:before{
-  content:"";position:absolute;top:0;width:100%;height:20px;
-  background:#fff1f5;border-radius:50%;
-}
-.top-cake{
-  position:absolute;bottom:103px;left:20%;width:60%;height:58px;
-  border-radius:15px 15px 20px 20px;
-  background:linear-gradient(90deg,#bfe6d0,#f4ffeb 40%,#d6f4e1);
-  box-shadow:inset 0 -8px 0 #b2ddc7;
-}
-.top-cake:before{
-  content:"";position:absolute;top:0;width:100%;height:19px;
-  background:#fffdf1;border-radius:50%;
-}
-.berry{position:absolute;top:9px;font-size:23px;z-index:2}
-.b1{left:16%}.b2{left:44%;top:2px}.b3{right:15%}
-.candle{
-  position:absolute;bottom:158px;left:calc(50% - 5px);
-  width:10px;height:36px;border-radius:4px;z-index:3;
-  background:repeating-linear-gradient(135deg,#fff 0 6px,#e9a5c6 6px 11px);
-}
-.flame{
-  position:absolute;top:-20px;left:-4px;width:18px;height:22px;
-  border-radius:60% 40% 55% 45%;
-  background:radial-gradient(circle at 50% 65%,#fff5a2 0 20%,#ffb147 50%,#ff7180 76%);
-  filter:drop-shadow(0 0 9px #ffb347);animation:flicker .5s infinite alternate;
-}
-@keyframes flicker{to{transform:rotate(8deg) scale(1.08)}}
-.flame.out{display:none}
-
-/* 책 엔딩 */
-#book{
-  background:linear-gradient(135deg,#fff5d7,#ffe2ed,#e2f7ec);
-  border:5px solid #fff8;
-  border-radius:28px;
-  padding:12px;
-  box-shadow:0 18px 45px #5d50632b;
-}
-.book-page{
-  min-height:290px;
-  padding:clamp(20px,5vw,36px);
-  background:#fffdf7;
-  border-radius:18px;
-  box-shadow:inset 0 0 0 2px #f5e2e6;
-  display:flex;flex-direction:column;justify-content:center;
-  text-align:center;
-}
-.book-page p{line-height:2}
-.page-count{font-size:12px;opacity:.65;letter-spacing:2px}
-#finalLetter{white-space:pre-line;text-align:left;line-height:2}
-#musicPlayer{
-  position:fixed;left:-9999px;bottom:0;
-  width:2px;height:2px;border:0;opacity:.01;
-  pointer-events:none;
-}
-#fireworksScreen{
-  display:none;position:fixed;inset:0;z-index:70;
-  background:radial-gradient(ellipse at center,#17152c,#05050d 75%);
-  color:#fff2cf;
-}
-#fireworksScreen.show{display:block}
-#fireworksCanvas{position:absolute;inset:0;width:100%;height:100%}
-.fireTitle{position:absolute;top:20%;width:100%;text-align:center;font-size:clamp(26px,7vw,40px)}
-#closeFireworks{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);background:#ffffff20;color:white;border:1px solid #ffffff88}
-footer{text-align:center;padding:20px;font-size:13px;opacity:.75}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
-}
+button:disabled{opacity:.4}
+section{min-height:85vh;padding:60px 16px;display:flex;align-items:center;justify-content:center;text-align:center}
+h1{font-size:clamp(32px,8vw,48px);line-height:1.4}
+h2{font-size:clamp(24px,5vw,32px)}
+p{line-height:1.9;word-break:keep-all}
+.card{width:min(620px,100%);padding:26px 19px;margin:auto;background:#ffffffdf;border:1px solid white;border-radius:28px;box-shadow:0 12px 35px #cba9c526}
+.heart{font-size:36px;animation:float 2s infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.small{font-size:12px;opacity:.75}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:15px 0}
+.pill{display:inline-block;background:#fff0f6;padding:8px 14px;border-radius:20px}
+#opening{position:fixed;inset:0;z-index:10;background:#fff0f6;display:flex;align-items:center;justify-content:center;transition:opacity .8s}
+.curtains{position:absolute;inset:0;display:flex;overflow:hidden}
+.curtains div{width:50%;background:linear-gradient(135deg,#f4bfd5,#d887ae);transition:transform 1.2s}
+#opening.open .curtains div:first-child{transform:translateX(-105%)}
+#opening.open .curtains div:last-child{transform:translateX(105%)}
+#opening.gone{opacity:0;pointer-events:none}
+.open-card{z-index:2;width:min(350px,88%);background:#fffaf4ed;padding:26px 20px;border-radius:28px}
+#opening.open .open-card{opacity:0;transition:opacity .3s}
+.music{max-width:390px;margin:18px auto;background:#fff2f7;border-radius:20px;padding:12px}
+#player{width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#ead9e4}
+#player iframe{width:100%;height:100%;border:0}
+.message{background:#fff2f7;border-radius:20px;padding:20px;margin:15px 0;min-height:95px}
+.alt{background:var(--lilac);color:#765c8d}
+#gameArea{position:relative;height:230px;background:linear-gradient(#fff0f6,#f1eaff);border-radius:20px;overflow:hidden;margin:16px 0}
+.star{position:absolute;font-size:30px;padding:0;background:none;box-shadow:none}
+.book{perspective:1200px;background:#c98da9;padding:12px;border-radius:8px 18px 18px 8px;box-shadow:7px 10px #b57694,0 15px 35px #8b5d7c33}
+.book-page{min-height:350px;background:#fffaf1;border-radius:4px 12px 12px 4px;padding:28px 20px;display:flex;flex-direction:column;justify-content:center;transform-origin:left;animation:turn .35s}
+@keyframes turn{from{opacity:.3;transform:rotateY(-12deg)}to{opacity:1;transform:rotateY(0)}}
+.page-no{margin-top:auto;padding-top:20px;font-size:12px;color:#c08ca5}
+.dots{display:flex;gap:8px;justify-content:center;margin:18px}
+.dot{width:9px;height:9px;border-radius:50%;background:#ead5e1}
+.dot.active{background:#d57fa5;transform:scale(1.25)}
+.cake{position:relative;width:180px;height:165px;margin:25px auto}
+.base{position:absolute;bottom:0;width:180px;height:95px;border-radius:15px 15px 22px 22px;background:#f4a9c5;box-shadow:inset 0 -12px #e68eaf}
+.base:before{content:"";position:absolute;top:0;width:100%;height:28px;background:#fff0f5;border-radius:50%}
+.top{position:absolute;bottom:76px;left:15px;width:150px;height:38px;background:#fff1f5;border-radius:50%}
+.candle{position:absolute;bottom:108px;left:84px;width:13px;height:42px;background:repeating-linear-gradient(45deg,#fff 0 6px,#f2a0c2 6px 12px);border-radius:4px}
+.flame{position:absolute;bottom:147px;left:80px;width:21px;height:28px;background:radial-gradient(ellipse,#fff7a3 10%,#ffbd62 50%,#ff8a77 80%);border-radius:50% 50% 45% 45%;animation:flicker .5s infinite alternate}
+@keyframes flicker{to{transform:rotate(6deg) scale(.85)}}
+.blown .flame{display:none}
+footer{text-align:center;padding:30px;font-size:12px;opacity:.65}
+.confetti{position:fixed;top:-30px;z-index:20;pointer-events:none;animation:fall 2.5s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:0}}
 </style>
 </head>
-
 <body>
-<div class="floaty f1">🎀</div>
-<div class="floaty f2">✨</div>
-<div class="floaty f3">🌷</div>
-<div class="floaty f4">💗</div>
 
-<div id="curtain">
-  <div class="panel left"></div>
-  <div class="panel right"></div>
-  <div class="curtain-label">
-    <div style="font-size:52px">🎂🎀✨</div>
-    <span class="pill">오늘의 주인공을 위한 작은 선물</span>
-    <h1>정찬 오빠,<br>생일 축하해! 🎉</h1>
-    <p>작지만 마음을 담아 준비했어.<br>천천히 구경해 줘. ♡</p>
-    <button id="openGift" class="pink">선물 열어 보기 ✨</button>
-    <p class="small">🎀 오늘 하루 행복하길 바라 🎀</p>
+<div id="opening">
+ <div class="curtains"><div></div><div></div></div>
+ <div class="open-card">
+  <div class="heart">🎁💗</div>
+  <h2>찬이 오빠에게</h2>
+  <p>작은 생일 선물을 준비했어.</p>
+  <button id="openBtn">선물 열어 보기 ✨</button>
+ </div>
+</div>
+
+<section>
+ <div class="card">
+  <div class="heart">🎂💗🎂</div>
+  <span class="pill">오늘의 주인공</span>
+  <h1>찬이 오빠<br>생일 축하해! 🎉</h1>
+  <p>오늘 하루는 오빠에게<br>작은 행복이 많이 찾아오길 바라.</p>
+  <div class="music">
+   <strong>🎵 LOVE ATTACK · RESCENE</strong>
+   <p class="small">웹사이트 안에서 재생돼. 음악이 안 나오면 재생 버튼을 눌러 줘.</p>
+   <div id="player"></div>
+   <button id="musicBtn">🎵 음악 재생하기</button>
   </div>
-</div>
+  <p class="small">천천히 아래로 내려가면서 구경해 줘 💌</p>
+ </div>
+</section>
 
-<div id="fireworksScreen">
-  <canvas id="fireworksCanvas"></canvas>
-  <div class="fireTitle">생일 축하해, 정찬 오빠! 🎆</div>
-  <button id="closeFireworks">파스텔 테마로 돌아가기 ♡</button>
-</div>
+<section>
+ <div class="card">
+  <div class="heart">🌷</div>
+  <h2>찬이 오빠에게 바라는 것</h2>
+  <p>오빠에게 전하고 싶은 말을 골라 봐.</p>
+  <div class="row">
+   <button class="alt" data-msg="아프지 말고 항상 건강하게 지내! 💪">건강하기</button>
+   <button class="alt" data-msg="끼니 거르지 말고 밥 잘 챙겨 먹어! 🍚">밥 잘 먹기</button>
+   <button class="alt" data-msg="잠도 충분히 자고 푹 쉬었으면 좋겠어. 🌙">잠 잘 자기</button>
+   <button class="alt" data-msg="힘든 날보다 웃는 날이 더 많았으면 좋겠어. ☀️">행복하기</button>
+   <button class="alt" data-msg="하고 싶은 일들이 하나씩 잘 풀리길 바라! 🍀">모든 일 잘되기</button>
+   <button class="alt" data-msg="오늘은 걱정 조금 내려놓고 편하게 보내! 🧸">편안한 하루</button>
+  </div>
+  <div class="message" id="wishText">오빠에게 전하고 싶은 말을 골라 봐 💗</div>
+  <button id="voiceWish">🔊 귀엽게 읽어 주기</button>
+  <p class="small">목소리는 기기에 설치된 한국어 음성에 따라 달라질 수 있어.</p>
+ </div>
+</section>
 
-<iframe id="musicPlayer" title="LOVE ATTACK 음악 플레이어"
-  allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+<section>
+ <div class="card">
+  <div class="heart">⭐</div>
+  <h2>별을 모아 봐!</h2>
+  <p>반짝이는 별을 눌러서 생일 별을 모아 줘.</p>
+  <p>모은 별: <strong id="score">0</strong>개</p>
+  <div id="gameArea">⭐</div>
+  <button id="startGame">별 모으기 시작 ⭐</button>
+  <p id="gameMessage">별을 5개 모아 봐!</p>
+ </div>
+</section>
 
-<main>
-  <header class="card center">
-    <span class="pill">🎀 오빠를 위한 특별한 하루 🎀</span>
-    <h1>생일 축하해! 🎂</h1>
-    <p>오빠를 위해 작은 생일 공간을 준비했어.</p>
-    <p>맛있는 것도 많이 먹고, 마음 편하게 웃는 하루가 되길 바라! 🌷</p>
-    <div class="row">
-      <span class="pill">🩵 민트</span>
-      <span class="pill">💛 버터 옐로</span>
-      <span class="pill">🩷 핑크</span>
-      <span class="pill">🩵 베이비 블루</span>
-    </div>
-    <p class="small">천천히 둘러봐 줘. 작은 선물들을 준비했어. ♡</p>
-    <div class="row">
-      <button id="musicButton" class="pink">LOVE ATTACK 재생하기 🎵</button>
-      <button id="musicStop" class="blue">음악 멈추기 ⏸</button>
-    </div>
-    <p id="musicStatus" class="small">선물 상자를 열면 음악이 재생돼. 🎧</p>
-  </header>
+<section>
+ <div class="card">
+  <div class="heart">🧩</div>
+  <h2>생일 미니 퀴즈</h2>
+  <div id="quizQuestion"></div>
+  <div id="quizOptions"></div>
+  <p id="quizFeedback"></p>
+  <button id="nextQuiz">다음 문제 ➜</button>
+ </div>
+</section>
 
-  <section class="card center section" id="games">
-    <span class="pill">첫 번째 선물 ⭐</span>
-    <h2>우리 같이 게임할까? 🎮</h2>
-    <p>작은 게임들을 준비했어. 부담 없이 즐겨 줘!</p>
+<section>
+ <div class="card">
+  <div class="heart">📖</div>
+  <h2>찬이 오빠에게 보내는 편지</h2>
+  <p>버튼을 눌러 페이지를 한 장씩 넘겨 봐. 💌</p>
+  <div class="book">
+   <div class="book-page" id="bookPage"></div>
+  </div>
+  <div class="dots">
+   <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+  <div class="row">
+   <button id="prevPage" disabled>← 이전 페이지</button>
+   <button id="nextPage">다음 페이지 →</button>
+  </div>
+  <p id="pageHint" class="small">다음 페이지를 눌러 편지를 계속 읽어 줘.</p>
+ </div>
+</section>
 
-    <hr>
-    <h3>⭐ 반짝이는 별을 잡아 봐!</h3>
-    <p>15초 안에 별 다섯 개를 잡아 봐!</p>
-    <p>잡은 별: <b id="starScore">0</b> / 5</p>
-    <p>남은 시간: <b id="starTime">15</b>초</p>
-    <div id="starArea"><p id="starIntro">준비됐으면 시작 버튼을 눌러 줘!</p></div>
-    <div class="row"><button id="startStars" class="pink">게임 시작 ⭐</button></div>
-    <p id="starResult" class="result"></p>
-
-    <hr>
-    <h3>💭 오늘의 작은 퀴즈</h3>
-    <p id="quizQuestion">퀴즈를 시작해 볼까?</p>
-    <div id="quizOptions"></div>
-    <p id="quizResult" class="result"></p>
-    <div class="row"><button id="startQuiz" class="mint">퀴즈 시작 💚</button></div>
-
-    <hr>
-    <h3>🎁 어떤 선물을 고를래?</h3>
-    <p>마음에 드는 선물 하나를 골라 봐!</p>
-    <div class="row">
-      <button class="choice" data-gift="cake">🎂</button>
-      <button class="choice" data-gift="star">⭐</button>
-      <button class="choice" data-gift="flower">🌷</button>
-    </div>
-    <p id="giftResult" class="result">어떤 선물이 나올까? 🎀</p>
-
-    <hr>
-    <h3>🍀 오늘의 건강 메시지</h3>
-    <p>버튼을 누를 때마다 새로운 메시지가 나와!</p>
-    <div style="font-size:40px">🌿🍀🌷</div>
-    <p id="healthMessage" class="result">오늘도 건강하고 행복하길 바라! ♡</p>
-    <div class="row"><button id="healthButton" class="mint">오늘의 메시지 뽑기 🍀</button></div>
-
-    <hr>
-    <h3>🌈 오늘은 어떤 걸 해 볼까?</h3>
-    <p>마음에 드는 걸 하나 골라 봐!</p>
-    <div class="row">
-      <button class="choice" data-health="meal">🍚</button>
-      <button class="choice" data-health="sleep">😴</button>
-      <button class="choice" data-health="rest">🌿</button>
-      <button class="choice" data-health="smile">😊</button>
-    </div>
-    <p id="healthChoice" class="result">작은 것부터 하나씩 해 보자! 💚</p>
-  </section>
-
-  <section class="card center section">
-    <span class="pill">두 번째 선물 🎧</span>
-    <h2>좋아하는 노래와 함께</h2>
-    <p>잠깐 쉬면서 노래도 듣고, 편안하게 시간을 보내자.</p>
-    <div style="font-size:50px">🎵💿🎀</div>
-    <h3>LOVE ATTACK — RESCENE</h3>
-    <p>음악을 켜 두면 다른 페이지를 둘러볼 때도 계속 재생되도록 준비했어.</p>
-    <div class="row">
-      <button id="musicButton2" class="pink">노래 재생하기 ▶</button>
-      <button id="musicStop2" class="blue">노래 멈추기 ⏸</button>
-      <button id="openYoutube" class="mint">유튜브에서 보기 ↗</button>
-    </div>
-    <p class="small">브라우저 설정에 따라 처음에는 재생 버튼을 한 번 눌러야 할 수 있어.</p>
-  </section>
-
-  <section class="card center section">
-    <span class="pill">세 번째 선물 🔊</span>
-    <h2>생일 축하 인사 듣기</h2>
-    <p>한국어로 짧은 생일 인사를 준비했어.</p>
-    <div style="font-size:48px">🎀🔊🎂</div>
-    <div class="row"><button id="voiceButton" class="blue">생일 축하 인사 듣기 🔊</button></div>
-    <p class="small">한국어 음성이 설치된 기기에서 들을 수 있어.</p>
-  </section>
-
-  <section class="card center section">
-    <span class="pill">네 번째 선물 🎆</span>
-    <h2>작은 밤하늘 선물</h2>
-    <p>읽는 걸 방해하지 않도록 불꽃놀이는 버튼을 눌렀을 때만 보여 줄게.</p>
-    <div style="font-size:48px">🌙✨🎇</div>
-    <div class="row"><button id="showFireworks" class="purple">불꽃놀이 보기 🎆</button></div>
-  </section>
-
-  <section class="card center section" id="storybook">
-    <span class="pill">마지막 선물 📖</span>
-    <h2>우리의 작은 생일 책</h2>
-    <p>마지막에는 작은 책장을 한 장씩 넘겨 봐. 🎀</p>
-
-    <div id="book">
-      <div class="book-page">
-        <div class="page-count" id="pageCount">PAGE 1 / 4</div>
-        <div id="pageEmoji" style="font-size:48px">📖🌷</div>
-        <h2 id="pageTitle">오늘의 주인공, 정찬 오빠</h2>
-        <p id="pageText">오늘은 오빠가 태어난 특별한 날이야.</p>
-      </div>
-      <div class="row">
-        <button id="prevPage" class="blue" disabled>← 이전 페이지</button>
-        <button id="nextPage" class="pink">다음 페이지 →</button>
-      </div>
-    </div>
-    <p class="small">한 장씩 넘기면서 마지막 선물까지 와 줘. 💌</p>
-  </section>
-
-  <section class="card center section" id="cakeEnding">
-    <span class="pill">마지막 장 🎂</span>
-    <h2>오빠를 위한 생일 케이크</h2>
-    <p>이제 마지막 선물이야. 소원을 하나 빌어 봐! 🍓</p>
-
-    <div class="cake-scene">
-      <div class="plate"></div>
-      <div class="bottom-cake"></div>
-      <div class="top-cake">
-        <span class="berry b1">🍓</span>
-        <span class="berry b2">🍓</span>
-        <span class="berry b3">🍓</span>
-      </div>
-      <div class="candle"><div class="flame" id="flame"></div></div>
-    </div>
-
-    <p id="candleMessage">눈을 감고 소원을 빌어 봐. 🕯️</p>
-    <div class="row">
-      <button id="blowCandle" class="yellow">후~ 촛불 끄기 🕯️</button>
-      <button id="relightCandle" class="pink">촛불 다시 켜기 ✨</button>
-    </div>
-
-    <div id="birthdayEnding" class="hidden">
-      <hr>
-      <div style="font-size:56px">🎉🎂🎉</div>
-      <h2>생일 축하합니다! 🎶</h2>
-      <p>생일 축하합니다~ 🎵<br>생일 축하합니다~ 🎵<br>사랑하는 정찬 오빠~ 🎵<br>생일 축하합니다~! 🎉</p>
-      <div class="row">
-        <button id="birthdaySong" class="pink">생일 축하 노래 듣기 🎶</button>
-        <button id="stopBirthdaySong" class="blue">노래 멈추기 ⏸</button>
-      </div>
-      <p id="birthdayStatus" class="small">생일 축하 노래를 준비했어. 💗</p>
-    </div>
-  </section>
-
-  <section class="card center section">
-    <span class="pill">오빠에게 보내는 편지 💌</span>
-    <h2>생일 편지 열어 보기</h2>
-    <div class="row"><button id="openLetter" class="pink">편지 열어 보기 💌</button></div>
-    <div id="letter" class="hidden" style="text-align:left;background:#fffdf6;border:2px solid #f4dce4;border-radius:16px;padding:24px;line-height:2">
-      <p>오빠, 생일 축하해! 🎂</p>
-      <p>오늘 하루는 맛있는 것도 많이 먹고, 마음 편하게 웃을 수 있는 하루였으면 좋겠어.</p>
-      <p>요즘 힘든 일이 있더라도 너무 무리하지 말고, 건강 잘 챙겼으면 좋겠어. 잠도 조금 더 잘 자고, 아픈 곳 없이 지냈으면 좋겠다.</p>
-      <p>밥도 잘 챙겨 먹고, 피곤할 때는 잠깐 쉬어 가도 괜찮아. 매일 모든 걸 완벽하게 해내지 않아도 되니까 너무 무리하지 않았으면 좋겠어.</p>
-      <p>올해는 오빠한테 좋은 일들이 많이 생기고, 마음도 지금보다 조금 더 편안해지길 바랄게.</p>
-      <p>힘든 날보다 웃는 날이 더 많고, 아픈 곳 없이 건강하게 지냈으면 좋겠어. 작은 행복도 자주 만나는 한 해가 되길 바라.</p>
-      <p>항상 건강하고, 행복하자.</p>
-      <p>생일 정말 축하해! 🌷</p>
-      <p style="text-align:right">— 생일을 축하하는 마음을 담아서 ♡</p>
-    </div>
-  </section>
-
-  <footer>
-    정찬 오빠의 생일을 축하하며 🎂<br>
-    항상 건강하고 행복하길 바라. 🌷
-  </footer>
-</main>
+<section id="cakeSection">
+ <div class="card">
+  <div class="heart">🎂</div>
+  <h1>마지막 선물이야!</h1>
+  <p>찬이 오빠, 소원을 하나 빌고<br>초를 불어 봐. 💗</p>
+  <div class="cake">
+   <div class="base"></div><div class="top"></div>
+   <div class="candle"></div><div class="flame"></div>
+  </div>
+  <button id="blowBtn">후~ 하고 초 불기 🕯️</button>
+  <div id="birthdayEnd" hidden>
+   <h2>생일 축하합니다! 🎉</h2>
+   <p>찬이 오빠의 하루가 따뜻하고 행복하길 바라.</p>
+   <p>늘 건강하고, 밥 잘 먹고, 잠도 푹 자고<br>웃을 일이 많은 한 해가 되길! 🍀</p>
+   <div>💗 💗 💗</div>
+   <button id="singBtn">🎶 생일 축하 노래 듣기</button>
+  </div>
+ </div>
+</section>
+<footer>찬이 오빠의 생일을 축하하며 💗</footer>
 
 <script>
-(() => {
-  "use strict";
-  const $ = id => document.getElementById(id);
+/* 음악: LOVE ATTACK 영상 전체를 웹페이지 안에서 반복 재생 */
+const VIDEO_ID = "9XttLI0oH0I";
+let player = null;
+let playerReady = false;
+let musicRequested = false;
 
-  // 커튼 열기
-  $("openGift").addEventListener("click", () => {
-    $("curtain").classList.add("open");
-    startMusic();
-    setTimeout(() => {
-      $("curtain").style.display = "none";
-      $("games").scrollIntoView({behavior:"smooth"});
-    },1550);
-  });
-
-  // 음악 재생: 사용자가 버튼을 누르면 유튜브 플레이어 실행
-  const videoId = "9XttLI0oH0I";
-  let musicStarted = false;
-
-  function startMusic() {
-    if (musicStarted) return;
-    musicStarted = true;
-    $("musicPlayer").src =
-      "https://www.youtube-nocookie.com/embed/" + videoId +
-      "?autoplay=1&loop=1&playlist=" + videoId + "&rel=0";
-    $("musicStatus").textContent = "LOVE ATTACK 재생을 요청했어! 🎵";
-  }
-  function stopMusic() {
-    $("musicPlayer").src = "";
-    musicStarted = false;
-    $("musicStatus").textContent = "음악을 멈췄어. 🎵";
-  }
-
-  ["musicButton","musicButton2"].forEach(id =>
-    $(id).addEventListener("click",startMusic)
-  );
-  ["musicStop","musicStop2"].forEach(id =>
-    $(id).addEventListener("click",stopMusic)
-  );
-  $("openYoutube").addEventListener("click",() => {
-    window.open("https://www.youtube.com/watch?v="+videoId,"_blank","noopener");
-  });
-
-  // 별 잡기 게임
-  let score=0,time=15,running=false,timer=null;
-  function placeStar() {
-    if(!running)return;
-    const area=$("starArea");
-    area.querySelectorAll(".star").forEach(s=>s.remove());
-    const star=document.createElement("button");
-    star.className="star";
-    star.textContent=["⭐","🌟","✨"][Math.floor(Math.random()*3)];
-    star.setAttribute("aria-label","별 잡기");
-    star.style.left=Math.random()*Math.max(0,area.clientWidth-55)+"px";
-    star.style.top=(35+Math.random()*135)+"px";
-    star.addEventListener("click",()=>{
-      if(!running)return;
-      score++;
-      $("starScore").textContent=score;
-      if(score>=5){endStars(true);return;}
-      placeStar();
-    });
-    area.appendChild(star);
-  }
-  function endStars(won) {
-    running=false;
-    clearInterval(timer);
-    $("starArea").querySelectorAll(".star").forEach(s=>s.remove());
-    $("starIntro").textContent=won?
-      "별 다섯 개를 모두 잡았어! 정말 잘했어! 🎉":
-      "괜찮아! 다시 도전해 봐! ⭐";
-    $("starResult").textContent=won?
-      "오늘 오빠에게 행운이 가득하길! 🍀":
-      "다음에는 별 다섯 개에 도전해 보자! 💗";
-    $("startStars").disabled=false;
-  }
-  $("startStars").addEventListener("click",()=>{
-    clearInterval(timer);
-    score=0;time=15;running=true;
-    $("starScore").textContent="0";
-    $("starTime").textContent="15";
-    $("starResult").textContent="";
-    $("starIntro").textContent="반짝이는 별을 눌러 잡아 봐! ✨";
-    $("startStars").disabled=true;
-    placeStar();
-    timer=setInterval(()=>{
-      time--;
-      $("starTime").textContent=time;
-      if(time<=0)endStars(false);
-    },1000);
-  });
-
-  // 퀴즈
-  const questions=[
-    {q:"생일에 가장 중요한 건 뭘까?",a:["건강과 행복","걱정만 하기","잠 안 자기"],c:0,m:"정답! 건강하고 행복한 게 제일 중요하지! 💗"},
-    {q:"오늘 오빠가 꼭 했으면 하는 건?",a:["밥 잘 챙겨 먹기","계속 일하기","쉬지 않기"],c:0,m:"맞아! 밥도 잘 먹고 건강도 챙기자! 🍚"},
-    {q:"피곤할 때는 어떻게 하는 게 좋을까?",a:["잠깐 쉬기","더 무리하기","잠 안 자기"],c:0,m:"정답! 쉴 때는 편하게 쉬어도 괜찮아. 🌿"},
-    {q:"새로운 한 해에 바라는 건?",a:["좋은 일과 편안한 마음","스트레스 가득한 날","매일 피곤하기"],c:0,m:"맞아! 좋은 일들이 많이 생기길 바라! 🍀"},
-    {q:"매일 조금씩 챙기면 좋은 건?",a:["건강과 충분한 잠","걱정만 하기","끼니 거르기"],c:0,m:"정답! 건강을 잘 챙기는 게 중요해! 🌙"}
-  ];
-  let qi=0;
-  function renderQuiz(){
-    const item=questions[qi];
-    $("quizQuestion").textContent=(qi+1)+" / "+questions.length+" · "+item.q;
-    $("quizOptions").innerHTML="";
-    $("quizResult").textContent="";
-    item.a.forEach((answer,i)=>{
-      const b=document.createElement("button");
-      b.className="quiz-option";
-      b.textContent=answer;
-      b.addEventListener("click",()=>{
-        $("quizOptions").querySelectorAll("button").forEach(x=>x.disabled=true);
-        $("quizResult").textContent=i===item.c?item.m:
-          "괜찮아! 정답은 \""+item.a[item.c]+"\" 이야. 💕";
-        const next=document.createElement("button");
-        next.className="mint";
-        next.style.marginTop="10px";
-        next.textContent=qi<questions.length-1?"다음 문제 →":"다시 퀴즈 풀기 ↻";
-        next.addEventListener("click",()=>{
-          qi=qi<questions.length-1?qi+1:0;
-          renderQuiz();
-        });
-        $("quizOptions").appendChild(next);
-      });
-      $("quizOptions").appendChild(b);
-    });
-  }
-  $("startQuiz").addEventListener("click",()=>{qi=0;renderQuiz();});
-
-  // 선물 고르기
-  const gifts={
-    cake:"달콤한 케이크를 골랐네! 오늘 하루도 달콤하길! 🎂",
-    star:"반짝이는 별을 골랐네! 좋은 일이 가득하길! ⭐",
-    flower:"예쁜 꽃을 골랐네! 매일 행복하길 바라! 🌷"
-  };
-  document.querySelectorAll("[data-gift]").forEach(b=>
-    b.addEventListener("click",()=>{
-      $("giftResult").textContent=gifts[b.dataset.gift];
-    })
-  );
-
-  // 건강 메시지
-  const messages=[
-    "항상 건강하고 아프지 마! 🌷",
-    "밥 잘 챙겨 먹고 잠도 푹 자! 🍚",
-    "오늘은 걱정 없이 많이 웃었으면 좋겠어! ☁️",
-    "힘들 땐 잠깐 쉬어 가도 괜찮아. 💚",
-    "올해는 좋은 일들이 가득하길 바라! 🍀",
-    "너무 무리하지 말고 건강부터 챙겨! 🩵",
-    "오늘 하루도 무사하고 편안하게 보내! 🌙",
-    "맛있는 거 먹고 기분 좋은 하루 보내! 🍰",
-    "잠깐이라도 마음 편히 쉴 수 있길 바라. 🌿",
-    "매일 조금씩 더 행복해지길 바라! 🎀",
-    "오늘도 수고했어. 편안한 밤 보내! 🌙",
-    "작은 행복이 자주 찾아오길 바라! 🌼",
-    "아픈 곳 없이 건강하게 지내자! 💗",
-    "오늘은 스스로에게 조금 더 다정해지기! 🫶",
-    "좋은 사람들과 따뜻한 순간이 가득하길! ☀️",
-    "잘 먹고, 잘 쉬고, 마음도 잘 챙기자! 🌱",
-    "걱정이 많아도 잠깐 내려놓고 쉬어 가자. ☁️",
-    "오빠의 하루가 평온하고 따뜻하길 바라! 🩵",
-    "올해는 웃을 일이 더 많아지길! 😊",
-    "매일매일 건강하고 행복하자! 🎂"
-  ];
-  $("healthButton").addEventListener("click",()=>{
-    let n=Math.floor(Math.random()*messages.length);
-    $("healthMessage").textContent=messages[n];
-  });
-
-  const healthChoices={
-    meal:"오늘은 맛있는 거 꼭 챙겨 먹기! 🍚",
-    sleep:"오늘 밤은 푹 자고 좋은 꿈 꾸기! 🌙",
-    rest:"잠깐 쉬면서 마음에 여유 주기! 🌿",
-    smile:"오늘은 기분 좋은 일 하나 찾아서 웃기! 😊"
-  };
-  document.querySelectorAll("[data-health]").forEach(b=>
-    b.addEventListener("click",()=>{
-      $("healthChoice").textContent=healthChoices[b.dataset.health];
-    })
-  );
-
-  // 한국어 음성
-  $("voiceButton").addEventListener("click",()=>{
-    if(!("speechSynthesis" in window)){
-      $("musicStatus").textContent="이 브라우저에서는 음성을 지원하지 않아. 🥹";
-      return;
+function onYouTubeIframeAPIReady(){
+ player = new YT.Player("player",{
+  videoId:VIDEO_ID,
+  playerVars:{
+   autoplay:1,controls:1,loop:1,playlist:VIDEO_ID,
+   playsinline:1,rel:0
+  },
+  events:{
+   onReady:function(){
+    playerReady=true;
+    if(musicRequested)playLoveAttack();
+   },
+   onStateChange:function(e){
+    if(e.data===YT.PlayerState.ENDED && musicRequested){
+     player.seekTo(0,true);
+     player.playVideo();
     }
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance("생일 축하해, 건강하자!");
-    u.lang="ko-KR";u.rate=.82;u.pitch=1.1;
-    const v=speechSynthesis.getVoices().find(x=>x.lang.toLowerCase().startsWith("ko"));
-    if(v)u.voice=v;
-    speechSynthesis.speak(u);
-  });
-
-  // 책장 넘기기
-  const pages=[
-    {emoji:"📖🌷",title:"오늘의 주인공, 정찬 오빠",text:"오늘은 오빠가 태어난 특별한 날이야.\n생일을 진심으로 축하해! 🎂"},
-    {emoji:"🍚🌿",title:"건강이 제일 중요해",text:"밥도 잘 챙겨 먹고, 잠도 푹 자고,\n아픈 곳 없이 건강하게 지냈으면 좋겠어.\n너무 무리하지 말고 쉬어 가도 괜찮아."},
-    {emoji:"☁️🍀",title:"마음이 편안한 한 해",text:"올해는 좋은 일이 많이 생기고,\n웃는 날이 더 많아지길 바라.\n작은 행복도 자주 찾아오면 좋겠다."},
-    {emoji:"💌🎀",title:"마지막으로 전하고 싶은 말",text:"항상 건강하고 행복하자.\n오늘 하루는 맛있는 것도 많이 먹고,\n마음 편하게 웃을 수 있길 바라.\n생일 정말 축하해! ♡"}
-  ];
-  let page=0;
-  function renderPage(){
-    const p=pages[page];
-    $("pageCount").textContent="PAGE "+(page+1)+" / "+pages.length;
-    $("pageEmoji").textContent=p.emoji;
-    $("pageTitle").textContent=p.title;
-    $("pageText").textContent=p.text;
-    $("prevPage").disabled=page===0;
-    $("nextPage").textContent=page===pages.length-1?"마지막 선물 보기 🎂":"다음 페이지 →";
+   }
   }
-  $("prevPage").addEventListener("click",()=>{
-    if(page>0){page--;renderPage();}
+ });
+}
+function playLoveAttack(){
+ musicRequested=true;
+ if(player && playerReady){
+  player.unMute();
+  player.setVolume(75);
+  player.playVideo();
+ }
+}
+function stopLoveAttack(){
+ musicRequested=false;
+ if(player && playerReady)player.pauseVideo();
+}
+document.getElementById("openBtn").addEventListener("click",()=>{
+ document.getElementById("opening").classList.add("open");
+ playLoveAttack();
+ setTimeout(()=>document.getElementById("opening").classList.add("gone"),1250);
+});
+document.getElementById("musicBtn").addEventListener("click",playLoveAttack);
+
+/* 귀여운 한국어 읽기 */
+function speakKorean(text,cute=false){
+ if(!("speechSynthesis" in window)){
+  alert("이 기기에서는 음성 읽기를 지원하지 않아.");
+  return;
+ }
+ speechSynthesis.cancel();
+ const utter=new SpeechSynthesisUtterance(text);
+ utter.lang="ko-KR";
+ utter.rate=cute?0.86:0.94;
+ utter.pitch=cute?1.3:1.08;
+ utter.volume=1;
+ const voices=speechSynthesis.getVoices();
+ const korean=voices.filter(v=>v.lang&&v.lang.toLowerCase().startsWith("ko"));
+ if(korean.length){
+  utter.voice=korean.find(v=>/female|woman|여성|yuna|sora/i.test(v.name))||korean[0];
+ }
+ speechSynthesis.speak(utter);
+}
+document.querySelectorAll("[data-msg]").forEach(btn=>{
+ btn.addEventListener("click",()=>document.getElementById("wishText").textContent=btn.dataset.msg);
+});
+document.getElementById("voiceWish").addEventListener("click",()=>{
+ speakKorean(document.getElementById("wishText").textContent,true);
+});
+
+/* 별 모으기 */
+let score=0,starTimer=null;
+const area=document.getElementById("gameArea");
+function spawnStar(){
+ area.innerHTML="";
+ const star=document.createElement("button");
+ star.className="star";
+ star.textContent="⭐";
+ star.style.left=(Math.random()*78+4)+"%";
+ star.style.top=(Math.random()*65+8)+"%";
+ star.addEventListener("click",()=>{
+  score++;
+  document.getElementById("score").textContent=score;
+  if(score>=5){
+   clearTimeout(starTimer);
+   area.innerHTML="🎉 ⭐ 🎉";
+   document.getElementById("gameMessage").textContent="축하해! 생일 별을 5개 모았어! 🍀";
+  }else spawnStar();
+ });
+ area.appendChild(star);
+ clearTimeout(starTimer);
+ starTimer=setTimeout(()=>{if(score<5)spawnStar()},2500);
+}
+document.getElementById("startGame").addEventListener("click",()=>{
+ clearTimeout(starTimer);score=0;
+ document.getElementById("score").textContent="0";
+ document.getElementById("gameMessage").textContent="별을 눌러 봐!";
+ spawnStar();
+});
+
+/* 퀴즈 */
+const questions=[
+ {q:"생일에 가장 먼저 해야 할 일은?",a:["소원 빌기 🎂","일만 하기 💻","아무것도 안 먹기"],c:0},
+ {q:"건강을 위해 중요한 것은?",a:["밥 잘 먹기 🍚","잠 안 자기","계속 무리하기"],c:0},
+ {q:"힘든 날에 필요한 것은?",a:["잠깐 쉬기 🧸","더 무리하기","밥 굶기"],c:0},
+ {q:"생일에 듣기 좋은 말은?",a:["생일 축하해! 🎉","오늘도 야근해!","빨리 가!"],c:0},
+ {q:"올해 오빠에게 바라는 것은?",a:["건강하고 행복하기 🍀","매일 피곤하기","계속 걱정하기"],c:0}
+];
+let qi=0;
+function renderQuiz(){
+ const q=questions[qi];
+ document.getElementById("quizQuestion").innerHTML="<h3>"+(qi+1)+". "+q.q+"</h3>";
+ const box=document.getElementById("quizOptions");box.innerHTML="";
+ q.a.forEach((a,i)=>{
+  const b=document.createElement("button");b.className="alt";b.style.display="block";b.style.width="100%";b.textContent=a;
+  b.addEventListener("click",()=>{
+   box.querySelectorAll("button").forEach(x=>x.disabled=true);
+   document.getElementById("quizFeedback").textContent=i===q.c?"정답이야! 잘했어 🎉":"괜찮아, 다음 문제도 도전해 봐 💗";
   });
-  $("nextPage").addEventListener("click",()=>{
-    if(page<pages.length-1){page++;renderPage();}
-    else $("cakeEnding").scrollIntoView({behavior:"smooth"});
-  });
-  renderPage();
+  box.appendChild(b);
+ });
+ document.getElementById("quizFeedback").textContent="";
+ document.getElementById("nextQuiz").textContent=qi===questions.length-1?"다시 하기 ↻":"다음 문제 ➜";
+}
+document.getElementById("nextQuiz").addEventListener("click",()=>{qi=(qi+1)%questions.length;renderQuiz()});
+renderQuiz();
 
-  // 편지 열기
-  $("openLetter").addEventListener("click",()=>{
-    const l=$("letter");
-    const opening=l.classList.contains("hidden");
-    l.classList.toggle("hidden");
-    $("openLetter").textContent=opening?"편지 닫기 💌":"편지 열어 보기 💌";
-    if(opening)setTimeout(()=>l.scrollIntoView({behavior:"smooth",block:"center"}),100);
-  });
+/* 책 페이지: 실제로 페이지 내용이 바뀜 */
+const pages=[
+ {title:"To. 찬이 오빠 💗",text:"오늘은 오빠가 태어난 날이네.<br><br>생일을 진심으로 축하해!<br>오늘 하루만큼은 마음 편하게 웃을 수 있길 바라."},
+ {title:"건강이 제일 중요해 🌷",text:"바쁠 때도 밥 잘 챙겨 먹고,<br>잠도 조금 더 푹 잤으면 좋겠어.<br><br>아프지 말고 건강하게 지내.<br>오빠 몸도 마음도 잘 돌봐 줘."},
+ {title:"행복한 날들이 많기를 🍀",text:"올해는 오빠가 바라는 일들이<br>조금씩 잘 풀렸으면 좋겠어.<br><br>힘든 일이 있어도 좋은 일이 더 많이 찾아오고,<br>웃는 날이 많아지길 바라."},
+ {title:"생일 축하해, 찬이 오빠 🎂",text:"이 작은 선물이 오빠에게<br>잠깐이라도 기분 좋은 순간이 되었으면 좋겠어.<br><br>오늘도, 그리고 앞으로도<br>건강하고 행복하게 지내!<br><br>생일 정말 축하해. 💗"}
+];
+let pi=0;
+function renderPage(){
+ const p=pages[pi],el=document.getElementById("bookPage");
+ el.style.animation="none";void el.offsetWidth;el.style.animation="turn .35s";
+ el.innerHTML="<h2>"+p.title+"</h2><p>"+p.text+"</p><div class='page-no'>"+(pi+1)+" / "+pages.length+"</div>";
+ document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===pi));
+ document.getElementById("prevPage").disabled=pi===0;
+ document.getElementById("nextPage").textContent=pi===pages.length-1?"마지막 선물 보기 🎂":"다음 페이지 →";
+ document.getElementById("pageHint").textContent=pi===pages.length-1?"마지막 페이지야. 버튼을 눌러 케이크를 만나 봐!":"다음 페이지를 눌러 편지를 계속 읽어 줘.";
+}
+document.getElementById("prevPage").addEventListener("click",()=>{if(pi>0){pi--;renderPage()}});
+document.getElementById("nextPage").addEventListener("click",()=>{
+ if(pi<pages.length-1){pi++;renderPage()}
+ else document.getElementById("cakeSection").scrollIntoView({behavior:"smooth"});
+});
+renderPage();
 
-  // 불꽃놀이: 직접 눌렀을 때만
-  const fc=$("fireworksCanvas"),ctx=fc.getContext("2d");
-  let particles=[],frame=null,fireworkOn=false;
-  function resize(){
-    const dpr=Math.min(devicePixelRatio||1,2);
-    fc.width=innerWidth*dpr;fc.height=innerHeight*dpr;
-    fc.style.width=innerWidth+"px";fc.style.height=innerHeight+"px";
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  addEventListener("resize",resize);resize();
-
-  function burst(x,y){
-    const colors=["#ff8fc8","#ffe7a0","#b9f6df","#b8d8ff","#ffffff"];
-    for(let i=0;i<60;i++){
-      const a=Math.random()*Math.PI*2,s=1+Math.random()*4;
-      particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,
-        life:65,max:65,c:colors[Math.floor(Math.random()*colors.length)]});
-    }
-  }
-  function animate(){
-    ctx.clearRect(0,0,innerWidth,innerHeight);
-    if(Math.random()<.045)burst(innerWidth*(.15+Math.random()*.7),innerHeight*(.25+Math.random()*.4));
-    particles=particles.filter(p=>p.life>0);
-    particles.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.life--;
-      ctx.globalAlpha=p.life/p.max;ctx.fillStyle=p.c;
-      ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);ctx.fill();
-    });
-    ctx.globalAlpha=1;
-    if(fireworkOn)frame=requestAnimationFrame(animate);
-  }
-  function closeFireworks(){
-    fireworkOn=false;
-    $("fireworksScreen").classList.remove("show");
-    if(frame)cancelAnimationFrame(frame);
-    frame=null;ctx.clearRect(0,0,innerWidth,innerHeight);
-  }
-  $("showFireworks").addEventListener("click",()=>{
-    $("fireworksScreen").classList.add("show");
-    fireworkOn=true;particles=[];
-    burst(innerWidth*.3,innerHeight*.4);burst(innerWidth*.7,innerHeight*.45);
-    animate();
-  });
-  $("closeFireworks").addEventListener("click",closeFireworks);
-
-  // 생일 케이크와 마지막 노래
-  let audioContext=null,birthdayTimers=[];
-  function stopBirthday(){
-    birthdayTimers.forEach(clearTimeout);
-    birthdayTimers=[];
-    if(audioContext){audioContext.close();audioContext=null;}
-    if("speechSynthesis" in window)speechSynthesis.cancel();
-  }
-
-  function playBirthday(){
-    stopBirthday();
-    $("birthdayStatus").textContent="생일 축하 노래가 시작됐어! 🎶";
-    const AudioCtx=window.AudioContext||window.webkitAudioContext;
-    if(!AudioCtx){
-      $("birthdayStatus").textContent="이 브라우저에서는 멜로디를 재생할 수 없어. 🥹";
-      return;
-    }
-    audioContext=new AudioCtx();
-    audioContext.resume();
-
-    // 생일 축하합니다 멜로디
-    const notes=[
-      [392,.35],[392,.35],[440,.7],[392,.7],[523,.7],[494,1.1],
-      [392,.35],[392,.35],[440,.7],[392,.7],[587,.7],[523,1.1],
-      [392,.35],[392,.35],[784,.7],[659,.7],[523,.7],[494,.7],[440,1.1],
-      [698,.35],[698,.35],[659,.7],[523,.7],[587,.7],[523,1.2]
-    ];
-    let t=audioContext.currentTime+.15;
-    notes.forEach(([freq,dur])=>{
-      const start=t;
-      const osc=audioContext.createOscillator();
-      const gain=audioContext.createGain();
-      osc.type="sine";osc.frequency.value=freq;
-      gain.gain.setValueAtTime(.0001,start);
-      gain.gain.exponentialRampToValueAtTime(.17,start+.025);
-      gain.gain.setValueAtTime(.17,start+dur*.72);
-      gain.gain.exponentialRampToValueAtTime(.0001,start+dur);
-      osc.connect(gain);gain.connect(audioContext.destination);
-      osc.start(start);osc.stop(start+dur+.03);
-      t+=dur+.045;
-    });
-
-    // 한국어 축하 인사도 함께
-    const delay=(t-audioContext.currentTime)*1000+150;
-    birthdayTimers.push(setTimeout(()=>{
-      if("speechSynthesis" in window){
-        const u=new SpeechSynthesisUtterance("생일 축하합니다. 생일 축하합니다. 사랑하는 정찬 오빠, 생일 축하합니다!");
-        u.lang="ko-KR";u.rate=.82;u.pitch=1.05;
-        const v=speechSynthesis.getVoices().find(x=>x.lang.toLowerCase().startsWith("ko"));
-        if(v)u.voice=v;
-        speechSynthesis.speak(u);
-      }
-    },Math.max(0,delay)));
-  }
-
-  $("blowCandle").addEventListener("click",()=>{
-    $("flame").classList.add("out");
-    $("candleMessage").textContent="소원이 이루어지길 바라! 생일 축하해! 🎉";
-    $("birthdayEnding").classList.remove("hidden");
-    stopMusic();
-    $("birthdayEnding").scrollIntoView({behavior:"smooth",block:"center"});
-    playBirthday();
-  });
-  $("relightCandle").addEventListener("click",()=>{
-    stopBirthday();
-    $("flame").classList.remove("out");
-    $("birthdayEnding").classList.add("hidden");
-    $("candleMessage").textContent="다시 반짝반짝! 소원을 하나 더 빌어 봐. ✨";
-  });
-  $("birthdaySong").addEventListener("click",playBirthday);
-  $("stopBirthdaySong").addEventListener("click",()=>{
-    stopBirthday();
-    $("birthdayStatus").textContent="노래를 멈췄어. 🎵";
-  });
-})();
+/* 촛불 끄기 */
+function confetti(){
+ const symbols=["💗","🎉","✨","🌸","💖","⭐"];
+ for(let i=0;i<28;i++){
+  const el=document.createElement("div");el.className="confetti";
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=Math.random()*100+"vw";el.style.animationDelay=Math.random()*.7+"s";
+  document.body.appendChild(el);setTimeout(()=>el.remove(),3500);
+ }
+}
+document.getElementById("blowBtn").addEventListener("click",()=>{
+ const s=document.getElementById("cakeSection");
+ if(s.classList.contains("blown"))return;
+ s.classList.add("blown");stopLoveAttack();
+ document.getElementById("blowBtn").disabled=true;
+ document.getElementById("birthdayEnd").hidden=false;
+ confetti();
+ speakKorean("찬이 오빠, 생일 축하해! 오늘 행복한 하루 보내고 건강하게 지내!",true);
+});
+document.getElementById("singBtn").addEventListener("click",()=>{
+ speakKorean("생일 축하합니다. 생일 축하합니다. 사랑하는 찬이 오빠, 생일 축하합니다!",true);
+});
+if("speechSynthesis" in window)speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
 </script>
+<script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
